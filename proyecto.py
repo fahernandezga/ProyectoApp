@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
 print("Hola mundo")
-ghghhg
-Print(holiwis)
+ghghh
 a=1
