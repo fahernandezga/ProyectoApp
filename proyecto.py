@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
-print("Hola mundo cruel")
+print("Hola mundotz")
 ghghh
-b=2
+a=1
