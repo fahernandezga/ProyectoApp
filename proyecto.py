@@ -7,6 +7,62 @@ materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_p
           'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
           'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado']
 
+
+
+from kivy.app import App
+from kivy.uix.label import Label
+from kivy.uix.checkbox import CheckBox
+from kivy.uix.button import Button
+from kivy.uix.popup import Popup
+from kivy.uix.textinput import TextInput
+from kivy.uix.gridlayout import GridLayout
+ 
+   
+class pensum(GridLayout):
+ 
+    def __init__(self, **kwargs):
+ 
+        super(pensum, self).__init__(**kwargs)
+ 
+        # 2 columnas
+        self.cols = 2
+
+        # Lista dde materias del pensum
+        self.materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
+          'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
+          'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
+          'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
+          'Mecanica_Cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
+          'Temas_de_fisica_contemporanea','Mecanica_cuantica_II','Fluidos_y_optica','Aplicaciones_de_fisica_moderna','Introduccion_al_estado_solido',
+          'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
+          'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado']
+       
+        #Crea los checkbox
+        for i in self.materias:
+            self.add_widget(Label(text= i))
+            self.active = CheckBox(active = True)
+            self.add_widget(self.active)
+            self.active.bind(active = self.on_checkbox_Active)
+           
+        #Crea el botón
+        self.continuar = Button(text="Continuar")
+        self.continuar.bind(on_press=self.onButtonPress1)
+        self.add_widget(self.continuar)
+
+          
+          ----------------------------------------
+          
+          
+class NombreTentativo(App):
+    def build(self):
+        return pensum()
+ 
+
+if __name__ == '__main__':
+    NombreTentativo().run()
+
+
+
 ######## EN OBRA NEGRA de Daniela
 materias2=[]    
 
