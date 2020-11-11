@@ -7,6 +7,31 @@ materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_p
           'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
           'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado']
 
+######## EN OBRA NEGRA de Daniela
+materias2=[]    
+
+class Materias:
+    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0):
+        self.nombre=nom
+        self.creditos=cre
+        self.prerrequisitos=pre
+        self.correquisitos=co
+        self.criterio=criterio
+
+    def __str__(self):
+        self.cadena=self.nombre
+        if cadena is not in materias2:
+            materias2.append(cadena)
+    def orden(self,otro): ##no sé si se puede poner "otro" o no creo que no, pero hay que hacer una forma así, con el "otro"
+        for n in materias2:
+            for i in len(self.pre):
+                if n == self.pre[i]: #si en la lista materias hay un prerrequisito
+                    self.criterio=otro.criterio+1
+                    
+                    
+    def __gt__(self, otro): #para utilizar el sorted(materias)
+        return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
+##### EN OBRA NEGRA
 
 
 #SEMESTRE III
