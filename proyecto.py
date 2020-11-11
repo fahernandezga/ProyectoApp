@@ -4,7 +4,8 @@ materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_p
           'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
           'Mecanica_Cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
           'Temas_de_fisica_contemporanea','Mecanica_cuantica_II','Fluidos_y_optica','Aplicaciones_de_fisica_moderna','Introduccion_al_estado_solido',
-          'Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III']
+          'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
+          'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado']
 
 
 
@@ -50,3 +51,14 @@ Introduccion_al_estado_solido=(3,['Mecanica_estadistica'])
 Introduccion_a_la_subatomica=(3,['Mecanica_cuantica_II'])
 Libre_eleccion_II=(4,[''])
 Libre_eleccion_III=(4,[''])
+
+#SEMESTRE IX	
+Introduccion_a_la_investigacion_experimental_o_teorica=subject(3,[])	
+Libre_eleccion_IV=subject(4,[])	
+Libre_eleccion_V=subject(4,[])	
+Libre_eleccion_VI=subject(4,[])	
+Libre_eleccion_VII=subject(4,[])	
+
+#SEMESTRE X	
+Trabajo_de_grado=subject(8.[])
+Libre_eleccion_VII=subject(4,[])
