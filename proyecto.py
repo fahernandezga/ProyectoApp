@@ -7,7 +7,7 @@ materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_p
           'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
           'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado']
 
--------------------------------------------------
+#-------------------------------------------------
 
 from kivy.app import App
 from kivy.uix.label import Label
@@ -50,7 +50,8 @@ class pensum(GridLayout):
         self.add_widget(self.continuar)
 
           
-          ----------------------------------------
+ #----------------------------------------
+ 
     # Función que elimina las materias clickeadas de la lista
     def on_checkbox_Active(self, checkboxInstance, isActive): 
         if isActive: 
@@ -91,7 +92,7 @@ class NombreTentativo(App):
     def build(self):
         return pensum()
  
-
+##Ejecutar kivy
 if __name__ == '__main__':
     NombreTentativo().run()
 -----------------------------------------------------------------------------------
