@@ -34,3 +34,13 @@ Electrodinamica_II=subject(3,['Electrodinamica_I'])
 Mecanica_cuantica_I=subject(4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
 Optativa_herramientas_matematicas_y_computacionales=subject(3,['Optativa_Programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
 
+#SEMESTRE IX
+introduccion_a_la_investigación_experimental_o_teorica=subject(3,[])
+optativa_3=subject(4,[])
+optativa_4=subject(4,[])
+optativa_5=subject(4,[])
+optativa_6=subject(4,[])
+
+#SEMESTRE X
+trabajo_de_grado=subject(8.[])
+optativa_7=subject(4,[])
