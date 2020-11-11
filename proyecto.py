@@ -60,7 +60,7 @@ class pensum(GridLayout):
            self.materias.pop()  
         return(self.materias)
              
-    #Crea el popup para que se ingresen las materias
+    #Crea el popup para que se ingresen los semestres
     def onButtonPress1(self, button):   
         layout = GridLayout(cols = 1, padding = 10) 
   
