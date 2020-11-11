@@ -7,7 +7,7 @@ materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_p
           'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
           'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado']
 
-
+-------------------------------------------------
 
 from kivy.app import App
 from kivy.uix.label import Label
@@ -51,7 +51,41 @@ class pensum(GridLayout):
 
           
           ----------------------------------------
-          
+    # Función que elimina las materias clickeadas de la lista
+    def on_checkbox_Active(self, checkboxInstance, isActive): 
+        if isActive: 
+            pass
+        else: 
+           self.materias.pop()  
+        return(self.materias)
+             
+    #Crea el popup para que se ingresen las materias
+    def onButtonPress1(self, button):   
+        layout = GridLayout(cols = 1, padding = 10) 
+  
+        self.popupLabel = Label(text = "Indique la cantidad de semestres que quiere cursar")
+        self.indique= TextInput()
+        self.botonSiguiente = Button(text = "Siguiente")
+        self.closeButton = Button(text = "Volver a la ventana anterior") 
+       
+        layout.add_widget(self.popupLabel) 
+        layout.add_widget(self.indique)
+        layout.add_widget(self.botonSiguiente)
+        layout.add_widget(self.closeButton)  
+        
+        popup = Popup(title ='Cantidad de semestres', 
+                      content = layout)   
+        popup.open()    
+ 
+        self.closeButton.bind(on_press = popup.dismiss)  
+        self.botonSiguiente.bind(on_press= self.onButtonPress2)
+        
+        self.a=self.indique
+ 
+    #Esto no funciona aún :c
+    def onButtonPress2(self,indique):
+        print(self.a)
+  
           
 class NombreTentativo(App):
     def build(self):
@@ -60,8 +94,7 @@ class NombreTentativo(App):
 
 if __name__ == '__main__':
     NombreTentativo().run()
-
-
+-----------------------------------------------------------------------------------
 
 ######## EN OBRA NEGRA de Daniela
 materias2=[]    
