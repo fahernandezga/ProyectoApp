@@ -2,9 +2,9 @@ materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_p
           'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
           'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
           'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
-          'Mecanica_Cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Introduccion_a_la_investigacion_experimental_o_teorica',
-          'Libre_eleccion_I','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV','Libre_eleccion_V','Libre_eleccion_VII','Libre_eleccion_VII',
-          'Libre_eleccion_VIII','Trabajo_de_grado']
+          'Mecanica_Cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
+          'Temas_de_fisica_contemporanea','Mecanica_cuantica_II','Fluidos_y_optica','Aplicaciones_de_fisica_moderna','Introduccion_al_estado_solido',
+          'Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III']
 
 
 
@@ -36,13 +36,17 @@ Electrodinamica_II=subject(3,['Electrodinamica_I'])
 Mecanica_cuantica_I=subject(4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
 Optativa_herramientas_matematicas_y_computacionales=subject(3,['Optativa_Programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
 
-#SEMESTRE IX
-Introduccion_a_la_investigacion_experimental_o_teorica=subject(3,[])
-Libre_eleccion_IV=subject(4,[])
-Libre_eleccion_V=subject(4,[])
-Libre_eleccion_VI=subject(4,[])
-Libre_eleccion_VII=subject(4,[])
 
-#SEMESTRE X
-Trabajo_de_grado=subject(8.[])
-Libre_eleccion_VII=subject(4,[])
+#SEMESTRE VII
+Mediciones_en_optica_y_acustica=(3,['Oscilaciones_y_ondas'])
+Mecanica_estadistica=(3,['Mecanica_cuantica_I','Termodinamica_modulo_de_teoria'])
+Temas_de_fisica_contemporanea=(1,['Experimentos_en_fisica_moderna'])
+Mecanica_cuantica_II=(3,['Mecanica_cuantica_I'])
+Fluidos_y_optica=(3,['Oscilaciones_y_ondas','Calculo_vectorial'])
+
+#SEMESTRE VIII
+Aplicaciones_de_fisica_moderna=(3,,['Introduccion_al_estado_solido'])
+Introduccion_al_estado_solido=(3,['Mecanica_estadistica'])
+Introduccion_a_la_subatomica=(3,['Mecanica_cuantica_II'])
+Libre_eleccion_II=(4,[''])
+Libre_eleccion_III=(4,[''])
