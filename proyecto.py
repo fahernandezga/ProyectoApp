@@ -2,7 +2,9 @@ materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_p
           'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
           'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
           'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
-          'Mecanica_Cuantica_I','Optativa_Herramientas_matematicas_y_computacionales']
+          'Mecanica_Cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Introduccion_a_la_investigación_experimental_o_teorica',
+          'Libre_elección_I','Libre_elección_II','Libre_elección_III','Libre_elección_IV','Libre_elección_V','Libre_elección_VII','Libre_elección_VII',
+          'Libre_elección_VIII','Trabajo_de_grado']
 
 
 
@@ -35,12 +37,12 @@ Mecanica_cuantica_I=subject(4,['Mecanica_analitica_I','Matematicas_especiales_I_
 Optativa_herramientas_matematicas_y_computacionales=subject(3,['Optativa_Programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
 
 #SEMESTRE IX
-introduccion_a_la_investigación_experimental_o_teorica=subject(3,[])
-optativa_3=subject(4,[])
-optativa_4=subject(4,[])
-optativa_5=subject(4,[])
-optativa_6=subject(4,[])
+Introduccion_a_la_investigación_experimental_o_teorica=subject(3,[])
+Libre_elección_IV=subject(4,[])
+Libre_elección_V=subject(4,[])
+Libre_elección_VI=subject(4,[])
+Libre_elección_VII=subject(4,[])
 
 #SEMESTRE X
-trabajo_de_grado=subject(8.[])
-optativa_7=subject(4,[])
+Trabajo_de_grado=subject(8.[])
+Libre_elección_VII=subject(4,[])
