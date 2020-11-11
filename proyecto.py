@@ -19,15 +19,16 @@ Matematicas_especiales_I_para_fisica=subject(3,['Calculo_de_ecuaciones_diferenci
 Relatividad=subject(3,['Electricidad_y_magnetismo'])
 
 #SEMESTRE V
-Experimentos_de_fisica_moderna=subject(3,['Fundamentos_de_fisica_experimental'])
+Experimentos_de_fisica_moderna=subject(3,['Fundamentos_de_fisica_experimental'],['Oscilaciones_y_ondas'])
 Mecanica_analitica_II=subject(3,['Mecanica_Analitica I'])
-Electrodinamica_I=subject(3,['Matematicas_especiales_I_para_fisica'])
+Electrodinamica_I=subject(3,['Matematicas_especiales_I_para_fisica','Electricidad_y_magnetismo'])
 Matematicas_especiales_II_para_fisica=subject(3,['Calculo_de_ecuaciones_diferenciales_ordinarias','Matematicas_especiales_I_para_fisica'])
 Optativa_Electronica_e_instrumentacion=subject(3,['Mediciones_electromagneticas'])
 
 #SEMESTRE VI
-Termodinamica_modulo_experimental=subject(2,['Mediciones_electromagneticas'])
+Termodinamica_modulo_experimental=subject(2,['Mediciones_electromagneticas'],['Termodinamica_modulo_de_teoria'])
 Termodinamica_modulo_de_teoria=subject(2,['Electricidad_y_magnetismo'])
 Electrodinamica_II=subject(3,['Electrodinamica_I'])
-Mecanica_Cuantica_I=subject(4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
-Optativa_Herramientas_matematicas_y_computacionales=subject(3,['Optativa_Programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
+Mecanica_cuantica_I=subject(4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
+Optativa_herramientas_matematicas_y_computacionales=subject(3,['Optativa_Programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
+
