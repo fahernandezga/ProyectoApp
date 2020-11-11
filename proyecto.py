@@ -1,3 +1,8 @@
+materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
+          'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
+          'Relatividad']
+
+
 
 #SEMESTRE III
 Mediciones_electromagneticas=subject(3,[],['Fundamentos_de_fisica_experimental'])
