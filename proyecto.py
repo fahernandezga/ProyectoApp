@@ -49,8 +49,8 @@ Fluidos_y_optica=(3,['Oscilaciones_y_ondas','Calculo_vectorial'])
 Aplicaciones_de_fisica_moderna=(3,,['Introduccion_al_estado_solido'])
 Introduccion_al_estado_solido=(3,['Mecanica_estadistica'])
 Introduccion_a_la_subatomica=(3,['Mecanica_cuantica_II'])
-Libre_eleccion_II=(4,[''])
-Libre_eleccion_III=(4,[''])
+Libre_eleccion_II=(4,[])
+Libre_eleccion_III=(4,[])
 
 #SEMESTRE IX	
 Introduccion_a_la_investigacion_experimental_o_teorica=subject(3,[])	
