@@ -220,6 +220,97 @@ class materias:
                     
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
+#Función para repartir los créditos por semestre
+ def onButtonPress1(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 1, a
+    def onButtonPress2(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 2, round(float(a/2))
+    def onButtonPress3(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 3, round(float(a/3))
+    def onButtonPress4(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 4, round(float(a/4))
+    def onButtonPress5(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 5, round(float(a/5))
+    def onButtonPress6(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 6, round(float(a/6))
+    def onButtonPress7(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 7, round(float(a/7))
+    def onButtonPress8(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 8, round(float(a/8))
+    def onButtonPress9(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 9, round(float(a/9))
+    def onButtonPress10(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 10, round(float(a/10))
+    def onButtonPress11(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 11, round(float(a/11))
+    def onButtonPress12(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 12, round(float(a/12))
+    def onButtonPress13(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 13, round(float(a/13))
+    def onButtonPress14(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 14, round(float(a/14))
+    def onButtonPress15(self,button):
+        a = 0
+        self.popup.dismiss()
+        for x in self.materias:
+            a = a + x.__dict__.get('creditos')
+        return 15, round(float(a/15))
 
 #SEMESTRE I
 Algebra_lineal=subject(4, [])
