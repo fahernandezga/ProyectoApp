@@ -191,24 +191,27 @@ if __name__ == '__main__':
 
 ######## EN OBRA NEGRA de Daniela
 materias2=[]    
-
-class Materias:
+materias3=[]
+class materias:
     def __init__(self,nom,cre=3,pre=[],co=[],criterio=0):
         self.nombre=nom
         self.creditos=cre
         self.prerrequisitos=pre
         self.correquisitos=co
         self.criterio=criterio
-
+        self.__str__()
+        self.orden()
+    def criterio_val(self):
+        return self.criterio
     def __str__(self):
-        self.cadena=self.nombre
-        if cadena is not in materias2:
+        cadena=self.nombre
+        if cadena not in materias2:
             materias2.append(cadena)
-    def orden(self,otro): ##no sé si se puede poner "otro" o no creo que no, pero hay que hacer una forma así, con el "otro"
+    def orden(self): ##no sé si se puede poner "otro" o no creo que no, pero hay que hacer una forma así, con el "otro"
         for n in materias2:
-            for i in len(self.pre):
-                if n == self.pre[i]: #si en la lista materias hay un prerrequisito
-                    self.criterio=otro.criterio+1
+            for i in range(len(self.prerrequisitos)):
+                if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
+                    self.criterio=materias3[materias2.index(n)]+1
                     
                     
     def __gt__(self, otro): #para utilizar el sorted(materias)
