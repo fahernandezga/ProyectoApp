@@ -193,7 +193,7 @@ if __name__ == '__main__':
     NombreTentativo().run()
 -----------------------------------------------------------------------------------
 
-######## EN OBRA NEGRA de Daniela
+#Función para leer prerrequistitos
 materias2=[]    
 materias3=[]
 class materias:
@@ -211,7 +211,7 @@ class materias:
         cadena=self.nombre
         if cadena not in materias2:
             materias2.append(cadena)
-    def orden(self): ##no sé si se puede poner "otro" o no creo que no, pero hay que hacer una forma así, con el "otro"
+    def orden(self): 
         for n in materias2:
             for i in range(len(self.prerrequisitos)):
                 if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
@@ -220,7 +220,7 @@ class materias:
                     
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
-##### EN OBRA NEGRA
+
 #SEMESTRE I
 Algebra_lineal=subject(4, [])
 Calculo_diferencial=subject(4, [])
