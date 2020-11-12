@@ -1,4 +1,6 @@
-materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
+materias=['Algebra_lineal','Calculo_diferencial','Fundamentos_de_fisica_teorica','Fundamentos_de_fisica_experimental','Taller_de_matematicas_y_ciencias',
+          'Calculo_integral','Calculo vectorial','Mecanica_Newtoniana','Mediciones_mecanicas','Optativa_formación_integral_y_humanistica',
+          'Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
           'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
           'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
           'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
@@ -28,7 +30,9 @@ class pensum(GridLayout):
         self.cols = 2
 
         # Lista dde materias del pensum
-        self.materias=['Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
+        self.materias=['Algebra_lineal','Calculo_diferencial','Fundamentos_de_fisica_teorica','Fundamentos_de_fisica_experimental','Taller_de_matematicas_y_ciencias',
+          'Calculo_integral','Calculo vectorial','Mecanica_Newtoniana','Mediciones_mecanicas','Optativa_formación_integral_y_humanistica',
+          'Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
           'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
           'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
           'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
@@ -217,7 +221,19 @@ class materias:
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
 ##### EN OBRA NEGRA
+#SEMESTRE I
+Algebra_lineal=subject(4, [])
+Calculo_diferencial=subject(4, [])
+Fundamentos_de_fisica_teorica=subject(3, [])
+Fundamentos_de_fisica_experimental=subject(3, [])
+Taller_de_matematicas_y_ciencias=subject(3, [])
 
+#SEMESTRE II
+Calculo_integral=subject(4, ['Calculo_diferencial'])
+Calculo_vectorial=subject(4, [], ['Calculo_integral'])
+Mecanica_Newtoniana=subject(4, ['Fundamentos_de_fisica_teorica'])
+Mediciones_mecanicas=subject(3, ['Fundamentos_de_fisica_experimental'])
+Optativa_formación_integral_y_humanistica=subject(3, [])
 
 #SEMESTRE III
 Mediciones_electromagneticas=subject(3,[],['Fundamentos_de_fisica_experimental'])
@@ -226,7 +242,7 @@ Optativa_programacion_y_metodos_numericos=subject(3,[],['Algebra_lineal'])
 Optativa_estadistica_basica=subject(3,['Calculo_diferencial'])
 Calculo_de_ecuaciones_diferenciales_ordinarias=subject(4,['Calculo_integral'])
 
-#SEMESTRE VI
+#SEMESTRE IV
 Optativa=subject(3,[])
 Mecanica_analitica_I=subject(3,['Mecanica_newtoniana'])
 Oscilaciones_y_ondas=subject(3,['Mecanica_newtoniana'])
