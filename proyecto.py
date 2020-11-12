@@ -63,7 +63,7 @@ class pensum(GridLayout):
      #Cuando se oprima el botón 'siguiente', muestra un popup para escoger los semestres
     def onButtonPress(self, button): 
           
-        layout = GridLayout(cols = 1, padding = 10) 
+        layout = GridLayout(cols = 1) 
   
         self.popupLabel = Label(text = "Seleccione la cantidad de semestres que quiere cursar")
         
