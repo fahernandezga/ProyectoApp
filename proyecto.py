@@ -1,5 +1,5 @@
 materias=['Algebra_lineal','Calculo_diferencial','Fundamentos_de_fisica_teorica','Fundamentos_de_fisica_experimental','Taller_de_matematicas_y_ciencias',
-          'Calculo_integral','Calculo vectorial','Mecanica_Newtoniana','Mediciones_mecanicas','Optativa_formación_integral_y_humanistica',
+          'Calculo_integral','Calculo_vectorial','Mecanica_Newtoniana','Mediciones_mecanicas','Optativa_formación_integral_y_humanistica',
           'Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
           'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
           'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
@@ -31,7 +31,7 @@ class pensum(GridLayout):
 
         # Lista dde materias del pensum
         self.materias=['Algebra_lineal','Calculo_diferencial','Fundamentos_de_fisica_teorica','Fundamentos_de_fisica_experimental','Taller_de_matematicas_y_ciencias',
-          'Calculo_integral','Calculo vectorial','Mecanica_Newtoniana','Mediciones_mecanicas','Optativa_formación_integral_y_humanistica',
+          'Calculo_integral','Calculo_vectorial','Mecanica_Newtoniana','Mediciones_mecanicas','Optativa_formación_integral_y_humanistica',
           'Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
           'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
           'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
