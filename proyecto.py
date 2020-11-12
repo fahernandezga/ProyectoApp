@@ -40,7 +40,7 @@ class pensum(GridLayout):
         #Crea los checkbox
         for i in self.materias:
             self.add_widget(Label(text= i))
-            self.active = CheckBox(active = True)
+            self.active = CheckBox()
             self.add_widget(self.active)
             self.active.bind(active = self.on_checkbox_Active)
            
@@ -52,13 +52,13 @@ class pensum(GridLayout):
           
  #----------------------------------------
  
-    # Función que elimina las materias clickeadas de la lista
+  # Función que elimina las materias clickeadas de la lista
     def on_checkbox_Active(self, checkboxInstance, isActive): 
         if isActive: 
-            pass
+            self.materias.pop()
         else: 
-           self.materias.pop()  
-        return(self.materias)
+           pass
+        print(self.materias)
              
      #Cuando se oprima el botón 'siguiente', muestra un popup para escoger los semestres
     def onButtonPress(self, button): 
