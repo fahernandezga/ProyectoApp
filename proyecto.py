@@ -45,7 +45,7 @@ class pensum(GridLayout):
             self.active.bind(active = self.on_checkbox_Active)
            
         #Crea el botón
-        self.continuar = Button(text="Continuar")
+        self.continuar = Button(text="Continuar", background_color=(155,0,51,53))
         self.continuar.bind(on_press=self.onButtonPress1)
         self.add_widget(self.continuar)
 
@@ -60,32 +60,124 @@ class pensum(GridLayout):
            self.materias.pop()  
         return(self.materias)
              
-    #Crea el popup para que se ingresen los semestres
-    def onButtonPress1(self, button):   
+     #Cuando se oprima el botón 'siguiente', muestra un popup para escoger los semestres
+    def onButtonPress(self, button): 
+          
         layout = GridLayout(cols = 1, padding = 10) 
   
-        self.popupLabel = Label(text = "Indique la cantidad de semestres que quiere cursar")
-        self.indique= TextInput()
-        self.botonSiguiente = Button(text = "Siguiente")
+        self.popupLabel = Label(text = "Seleccione la cantidad de semestres que quiere cursar")
+        
+        self.boton1 = Button(text = "1")
+        self.boton2 = Button(text = "2")
+        self.boton3 = Button(text = "3")
+        self.boton4 = Button(text = "4")
+        self.boton5 = Button(text = "5")
+        self.boton6 = Button(text = "6")
+        self.boton7 = Button(text = "7")
+        self.boton8 = Button(text = "8")
+        self.boton9 = Button(text = "9")
+        self.boton10 = Button(text = "10")
+        self.boton11 = Button(text = "11")
+        self.boton12 = Button(text = "12")
+        self.boton13 = Button(text = "13")
+        self.boton14 = Button(text = "14")
+        self.boton15 = Button(text = "15")
+
+        
+        
         self.closeButton = Button(text = "Volver a la ventana anterior") 
-       
+         
+
+  
         layout.add_widget(self.popupLabel) 
-        layout.add_widget(self.indique)
-        layout.add_widget(self.botonSiguiente)
+        layout.add_widget(self.boton1)
+        layout.add_widget(self.boton2)
+        layout.add_widget(self.boton3)
+        layout.add_widget(self.boton4)
+        layout.add_widget(self.boton5)
+        layout.add_widget(self.boton6)
+        layout.add_widget(self.boton7)
+        layout.add_widget(self.boton8)
+        layout.add_widget(self.boton9)
+        layout.add_widget(self.boton10)
+        layout.add_widget(self.boton11)
+        layout.add_widget(self.boton12)
+        layout.add_widget(self.boton13)
+        layout.add_widget(self.boton14)
+        layout.add_widget(self.boton15)
+        
         layout.add_widget(self.closeButton)  
         
-        popup = Popup(title ='Cantidad de semestres', 
-                      content = layout)   
-        popup.open()    
- 
-        self.closeButton.bind(on_press = popup.dismiss)  
-        self.botonSiguiente.bind(on_press= self.onButtonPress2)
         
-        self.a=self.indique
+        self.popup = Popup(title ='Cantidad de semestres', 
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))   
+        self.popup.open()    
  
-    #Esto no funciona aún :c
-    def onButtonPress2(self,indique):
-        print(self.a)
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+        self.boton1.bind(on_press= self.onButtonPress1)
+        self.boton2.bind(on_press= self.onButtonPress2)
+        self.boton3.bind(on_press= self.onButtonPress3)
+        self.boton4.bind(on_press= self.onButtonPress4)
+        self.boton5.bind(on_press= self.onButtonPress5)
+        self.boton6.bind(on_press= self.onButtonPress6)
+        self.boton7.bind(on_press= self.onButtonPress7)
+        self.boton8.bind(on_press= self.onButtonPress8)
+        self.boton9.bind(on_press= self.onButtonPress9)
+        self.boton10.bind(on_press= self.onButtonPress10)
+        self.boton11.bind(on_press= self.onButtonPress11)
+        self.boton12.bind(on_press= self.onButtonPress12)
+        self.boton13.bind(on_press= self.onButtonPress13)
+        self.boton14.bind(on_press= self.onButtonPress14)
+        self.boton15.bind(on_press= self.onButtonPress15)
+        
+        
+  
+    def onButtonPress1(self,button):
+        self.popup.dismiss()
+        print(int(1))
+    def onButtonPress2(self,button):
+        self.popup.dismiss()
+        print(int(2))
+    def onButtonPress3(self,button):
+        self.popup.dismiss()
+        print(int(3))
+    def onButtonPress4(self,button):
+        self.popup.dismiss()
+        print(int(4))
+    def onButtonPress5(self,button):
+        self.popup.dismiss()
+        print(int(5))
+    def onButtonPress6(self,button):
+        self.popup.dismiss()
+        print(int(6))
+    def onButtonPress7(self,button):
+        self.popup.dismiss()
+        print(int(7))
+    def onButtonPress8(self,button):
+        self.popup.dismiss()
+        print(int(8))
+    def onButtonPress9(self,button):
+        self.popup.dismiss()
+        print(int(9))
+    def onButtonPress10(self,button):
+        self.popup.dismiss()
+        print(int(10))
+    def onButtonPress11(self,button):
+        self.popup.dismiss()
+        print(int(11))
+    def onButtonPress12(self,button):
+        self.popup.dismiss()
+        print(int(12))
+    def onButtonPress13(self,button):
+        self.popup.dismiss()
+        print(int(13))
+    def onButtonPress14(self,button):
+        self.popup.dismiss()
+        print(int(14))
+    def onButtonPress15(self,button):
+        self.popup.dismiss()
+        print(int(15))
   
           
 class NombreTentativo(App):
