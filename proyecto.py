@@ -50,7 +50,7 @@ class pensum(GridLayout):
            
         #Crea el botón
         self.continuar = Button(text="Continuar", background_color=(155,0,51,53))
-        self.continuar.bind(on_press=self.onButtonPress1)
+        self.continuar.bind(on_press=self.onButtonPress)
         self.add_widget(self.continuar)
 
           
