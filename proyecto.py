@@ -193,7 +193,7 @@ if __name__ == '__main__':
     NombreTentativo().run()
 -----------------------------------------------------------------------------------
 
-#Función para leer prerrequistitos
+#Función para leer prerrequisitos
 materias2=[]    
 materias3=[]
 LineasCampo=[]
@@ -211,6 +211,8 @@ class materias:
         self.orden()
     def criterio_val(self):
         return self.criterio
+    def linea_val(self):
+        return self.linea
     def __str__(self):
         cadena=self.nombre
         if cadena not in materias2:
