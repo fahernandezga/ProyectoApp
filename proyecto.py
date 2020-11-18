@@ -219,7 +219,8 @@ class materias:
             materias2.append(cadena)
     def orden(self):
           if len(self.prerrequisito)==0:
-            self.linea==len(LineasCampo)+1
+            self.linea=len(LineasCampo)+1
+            LineasCampo[-1]=self.linea_val()
           else:
                   for n in materias2:
                       for i in range(len(self.prerrequisitos)):
