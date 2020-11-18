@@ -203,6 +203,7 @@ class materias:
         self.prerrequisitos=pre
         self.correquisitos=co
         self.criterio=criterio
+        materias3.append(self.criterio_val())
         self.__str__()
         self.orden()
     def criterio_val(self):
@@ -215,8 +216,8 @@ class materias:
         for n in materias2:
             for i in range(len(self.prerrequisitos)):
                 if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
-                    self.criterio=materias3[materias2.index(n)]+1
-                    
+                    self.criterio=self.criterio+materias3[materias2.index(n)]+1
+                    materias3[-1]=self.criterio_val()
                     
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
