@@ -196,13 +196,16 @@ if __name__ == '__main__':
 #Función para leer prerrequistitos
 materias2=[]    
 materias3=[]
+LineasCampo=[]
 class materias:
-    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0):
+    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,Linea=0):
         self.nombre=nom
         self.creditos=cre
         self.prerrequisitos=pre
         self.correquisitos=co
         self.criterio=criterio
+        self.linea=linea
+        LineasCampo.append(self.linea_val())
         materias3.append(self.criterio_val())
         self.__str__()
         self.orden()
@@ -212,12 +215,17 @@ class materias:
         cadena=self.nombre
         if cadena not in materias2:
             materias2.append(cadena)
-    def orden(self): 
-        for n in materias2:
-            for i in range(len(self.prerrequisitos)):
-                if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
-                    self.criterio=self.criterio+materias3[materias2.index(n)]+1
-                    materias3[-1]=self.criterio_val()
+    def orden(self):
+          if len(self.prerrequisito)==0:
+            self.linea==len(LineasCampo)+1
+          else:
+                  for n in materias2:
+                      for i in range(len(self.prerrequisitos)):
+                          if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
+                              self.criterio=self.criterio+materias3[materias2.index(n)]+1
+                              materias3[-1]=self.criterio_val()
+                              self.linea=LineasCampo[materias2.index(n)]
+                              LineasCampo[-1]=self.linea_val()
                     
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
