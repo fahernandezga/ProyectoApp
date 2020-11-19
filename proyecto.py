@@ -20,7 +20,14 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
- 
+from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import ObjectProperty, StringProperty
+from kivy.uix.widget import Widget
+from kivy.storage.jsonstore import JsonStore
+from kivy.uix.recycleview import RecycleView
+from kivy.clock import Clock
+
+
 Builder.load_string("""
 <MenuScreen>:
     BoxLayout:
@@ -350,6 +357,80 @@ class NombreTentativo(App):
 
 if __name__ == '__main__': 
     NombreTentativo().run()
+
+
+
+########################OBRA NEGRA
+#texto agregado
+class AddNewForm(Widget):
+    texto_agregado = ObjectProperty(None)
+
+    input = StringProperty('')
+
+    store = JsonStore("data.json")
+
+    def submit_imput(self):
+        self.input = self.texto_agregado.text
+        print("Assign input: {}".format(self.input))
+        self.save()
+        self.input = ''
+
+    def save(self):
+        self.store.put(self.input)
+
+
+#organizar la lista
+class Menu(BoxLayout):
+    manager = ObjectProperty(None)
+
+
+#vista de la pantalla
+class MyRecycleView(RecycleView):
+
+    def __init__(self, **kwargs):
+        super(MyRecycleView, self).__init__(**kwargs)
+        self.load_data()
+        Clock.schedule_interval(self.load_data, 1)
+
+#mostrar la informacion recibida
+    def load_data(self, *args):
+        store = JsonStore("data.json")
+        lista_datos = []
+        for i in store:
+            lista_datos.append({'text': i})
+
+        self.data = lista_datos
+
+
+# configuración pantalla dispositivo
+class HomeScreen(Screen):
+    pass
+
+
+class AddScreen(Screen):
+    def __init__(self, **kwargs):
+        super(AddScreen, self).__init__(**kwargs)
+        self.addNewForm = AddNewForm()
+        self.add_widget(self.addNewForm)
+
+
+#permite ver varias pantallas
+class ScreenManagement(ScreenManager):
+    screen_home = ObjectProperty(None)
+    screen_add = ObjectProperty(None)
+
+
+class TodoApp(App):
+    pass
+    #def build(self):
+     #   return Menu()
+
+if __name__ == '__main__':
+    TodoApp().run()
+
+######################OBRA NEGRA
+
+
 -----------------------------------------------------------------------------------
 
 #Función para leer prerrequisitos
