@@ -358,7 +358,7 @@ class Pensum(GridLayout, Screen):
         self.boton15.bind(on_press= self.onButtonPress15)
         
         
-     def onButtonPress1(self,button):
+    def onButtonPress1(self,button):
         a = 0
         self.popup.dismiss()
         for x in self.materias:
