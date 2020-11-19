@@ -19,12 +19,158 @@ from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
  
-   
-class pensum(GridLayout):
+Builder.load_string("""
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Mi pensum'
+            on_press: root.manager.current = 'pensum'
+            background_color:(100,53,0,0)
+        Button:
+            text: 'Salud Mental'
+            on_press: root.manager.current = 'saludmental'
+            background_color:(100,53,0,20)
+            
+<Pensum>:
+    BoxLayout:
+       
+        Button:
+            text: 'Devolver'
+            on_press: root.manager.current = 'menu'
+            pos_hint: {'x': 2, 'y': 0}
+            background_color: (155,0,51,53)
+            
+<SaludMental>:
+    BoxLayout:
+       
+        Button:
+            text: 'Devolver'
+            on_press: root.manager.current = 'menu'
+            pos_hint: {'x': 2, 'y': 0}
+            background_color: (155,0,51,53)
+            size_hint: (None, None)
+            size: (100, 50)
+""") 
+
+class SaludMental(GridLayout, Screen):
+    def __init__(self, **kwargs): 
+        # super function can be used to gain access  
+        # to inherited methods from a parent or sibling class  
+        # that has been overwritten in a class object.  
+        super(SaludMental, self).__init__(**kwargs) 
+        self.cols = 1
+        
+        self.seleccione = Label(text = "¿Sobre qué categoría le gustaría informarse?")
+        self.add_widget(self.seleccione)
+        
+        self.Metodosdeestudio = Button(text="Métodos de estudio", background_color=(0,155,0,53))
+        self.Metodosdeestudio.bind(on_press=self.btnestudio)
+        self.add_widget(self.Metodosdeestudio)
+        
+        self.Ejerciciofisico = Button(text="Ejercicio Físico", background_color=(0,155,0,53))
+        self.Ejerciciofisico.bind(on_press=self.btnejercicio)
+        self.add_widget(self.Ejerciciofisico)
+        
+        self.Alimentacion = Button(text="Alimentacion", background_color=(0,155,0,53))
+        self.Alimentacion.bind(on_press=self.btnalimentacion)
+        self.add_widget(self.Alimentacion)
+        
+        self.Relacionessociales = Button(text="Relaciones Sociales", background_color=(0,155,0,53))
+        self.Relacionessociales.bind(on_press=self.btnrelaciones)
+        self.add_widget(self.Relacionessociales)
+        
+        self.Relajacion = Button(text="Relajación", background_color=(0,155,0,53))
+        self.Relajacion.bind(on_press=self.btnrelajacion)
+        self.add_widget(self.Relajacion)
+        
+        self.Sueño = Button(text="Sueño", background_color=(0,155,0,53))
+        self.Sueño.bind(on_press=self.btnSueño)
+        self.add_widget(self.Sueño)
+        
+    def btnestudio(self, button): 
+          
+        layout = GridLayout(cols = 1) 
+        self.consejos= Label(text = "Puede parecer bastante obvio, pero mucha gente no sabe que cuidando nuestra salud física también estamos cuidando nuestra salud mental y por tanto, emocional.", text_size=(6,2))
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))  
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton) 
+        self.popup = Popup(title ='Métodos de estudio', 
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))   
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+        
+    def btnejercicio(self, button): 
+          
+        layout = GridLayout(cols = 1) 
+        self.consejos= Label(text = "Puede parecer bastante obvio,\n pero mucha gente no sabe que cuidando\n nuestra salud física también estamos cuidando\n nuestra salud mental y por tanto, emocional. Cuando\n hacemos ejercicio no sólo mejoramos aspectos\n como nuestra presión sanguínea, sino que también aumentan\n nuestros niveles de energía. Pero lo más importante es que las actividades \nfísicas inciden sobre lo que llamamos “hormonas\n de la felicidad”, y por tanto")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50)) 
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton) 
+        self.popup = Popup(title ='Ejercicio Físico', 
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))   
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+    
+    def btnalimentacion(self, button): 
+          
+        layout = GridLayout(cols = 1) 
+        self.consejos= Label(text = "Puede parecer bastante obvio,\n pero mucha gente no sabe que cuidando\n nuestra salud física también estamos cuidando\n nuestra salud mental y por tanto, emocional. Cuando\n hacemos ejercicio no sólo mejoramos aspectos\n como nuestra presión sanguínea, sino que también aumentan\n nuestros niveles de energía. Pero lo más importante es que las actividades \nfísicas inciden sobre lo que llamamos “hormonas\n de la felicidad”, y por tanto")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50)) 
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton) 
+        self.popup = Popup(title ='Alimentación', 
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))   
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+        
+    def btnrelaciones(self, button): 
+          
+        layout = GridLayout(cols = 1) 
+        self.consejos= Label(text = "Puede parecer bastante obvio,\n pero mucha gente no sabe que cuidando\n nuestra salud física también estamos cuidando\n nuestra salud mental y por tanto, emocional. Cuando\n hacemos ejercicio no sólo mejoramos aspectos\n como nuestra presión sanguínea, sino que también aumentan\n nuestros niveles de energía. Pero lo más importante es que las actividades \nfísicas inciden sobre lo que llamamos “hormonas\n de la felicidad”, y por tanto")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50)) 
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton) 
+        self.popup = Popup(title ='Relaciones Sanas', 
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))   
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+        
+    def btnrelajacion(self, button): 
+          
+        layout = GridLayout(cols = 1) 
+        self.consejos= Label(text = "Puede parecer bastante obvio,\n pero mucha gente no sabe que cuidando\n nuestra salud física también estamos cuidando\n nuestra salud mental y por tanto, emocional. Cuando\n hacemos ejercicio no sólo mejoramos aspectos\n como nuestra presión sanguínea, sino que también aumentan\n nuestros niveles de energía. Pero lo más importante es que las actividades \nfísicas inciden sobre lo que llamamos “hormonas\n de la felicidad”, y por tanto")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50)) 
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton) 
+        self.popup = Popup(title ='Relajación', 
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))   
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+        
+    def btnSueño(self, button): 
+          
+        layout = GridLayout(cols = 1) 
+        self.consejos= Label(text = "Puede parecer bastante obvio,\n pero mucha gente no sabe que cuidando\n nuestra salud física también estamos cuidando\n nuestra salud mental y por tanto, emocional. Cuando\n hacemos ejercicio no sólo mejoramos aspectos\n como nuestra presión sanguínea, sino que también aumentan\n nuestros niveles de energía. Pero lo más importante es que las actividades \nfísicas inciden sobre lo que llamamos “hormonas\n de la felicidad”, y por tanto")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50)) 
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton) 
+        self.popup = Popup(title ='Sueño', 
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))   
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+        
+class Pensum(GridLayout, Screen):
  
     def __init__(self, **kwargs):
  
-        super(pensum, self).__init__(**kwargs)
+        super(Pensum, self).__init__(**kwargs)
  
         # 2 columnas
         self.cols = 2
@@ -183,13 +329,24 @@ class pensum(GridLayout):
         self.popup.dismiss()
         print(int(15))
   
-          
-class NombreTentativo(App):
-    def build(self):
-        return pensum()
- 
-##Ejecutar kivy
-if __name__ == '__main__':
+
+class MenuScreen(Screen):
+    pass
+  
+   
+# Crea screen manager
+sm = ScreenManager()
+sm.add_widget(MenuScreen(name='menu'))
+sm.add_widget(Pensum(name='pensum'))
+sm.add_widget(SaludMental(name='saludmental'))
+   
+  
+class NombreTentativo(App): 
+    def build(self): 
+        return sm
+  
+
+if __name__ == '__main__': 
     NombreTentativo().run()
 -----------------------------------------------------------------------------------
 
