@@ -1,13 +1,80 @@
-materias=['Algebra_lineal','Calculo_diferencial','Fundamentos_de_fisica_teorica','Fundamentos_de_fisica_experimental','Taller_de_matematicas_y_ciencias',
-          'Calculo_integral','Calculo_vectorial','Mecanica_Newtoniana','Mediciones_mecanicas','Optativa_formación_integral_y_humanistica',
+materias=['Fundamentos_de_fisica_experimental','Fundamentos_de_fisica_teorica','Calculo_diferencial_en_una_variable','Taller_de_matematicas_y_ciencias','Algebra_lineal_basica',
+          'Libre_eleccion_I','Mediciones_mecanicas','Mecanica_newtoniana','Calculo_integral_en_una_variable','Calculo_vectorial','Optativa_formación_integral_y_humanistica',
           'Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
-          'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
+          'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa_formacion_integral_y_humanistica','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
           'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
           'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
-          'Mecanica_Cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
+          'Mecanica_cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
           'Temas_de_fisica_contemporanea','Mecanica_cuantica_II','Fluidos_y_optica','Aplicaciones_de_fisica_moderna','Introduccion_al_estado_solido',
           'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
-          'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado']
+          'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado','Libre_eleccion_VIII']
+#SEMESTRE I
+Fundamentos_de_fisica_experimental=subject(3, [])
+Fundamentos_de_fisica_teorica=subject(3, [])
+Calculo_diferencial_en_una_variable=subject(4, [])
+Taller_de_matematicas_y_ciencias=subject(3, [])
+Algebra_lineal_basica=subject(4, [])
+Libre_eleccion_I=subject(4,[])
+
+#SEMESTRE II
+Mediciones_mecanicas=subject(3, ['Fundamentos_de_fisica_experimental'])
+Mecanica_newtoniana=subject(4, ['Fundamentos_de_fisica_teorica'])
+Calculo_integral_en_una_variable=subject(4, ['Calculo_diferencial'])
+Calculo_vectorial=subject(4, [], ['Calculo_integral'])
+Optativa_formación_integral_y_humanistica=subject(3, [])
+
+#SEMESTRE III
+Mediciones_electromagneticas=subject(3,[],['Fundamentos_de_fisica_experimental'])
+Electricidad_y_magnetismo=subject(3,[],['Calculo_integral', 'Calculo_vectorial'])
+Optativa_programacion_y_metodos_numericos=subject(3,[],['Algebra_lineal'])
+Optativa_estadistica_basica=subject(3,['Calculo_diferencial'])
+Calculo_de_ecuaciones_diferenciales_ordinarias=subject(4,['Calculo_integral'])
+
+#SEMESTRE IV
+Optativa_formacion_integral_y_humanistica=subject(3,[])
+Mecanica_analitica_I=subject(3,['Mecanica_newtoniana'])
+Oscilaciones_y_ondas=subject(3,['Mecanica_newtoniana'])
+Matematicas_especiales_I_para_fisica=subject(3,['Calculo_de_ecuaciones_diferenciales_ordinarias'])
+Relatividad=subject(3,['Electricidad_y_magnetismo'])
+
+#SEMESTRE V
+Experimentos_de_fisica_moderna=subject(3,['Fundamentos_de_fisica_experimental'],['Oscilaciones_y_ondas'])
+Mecanica_analitica_II=subject(3,['Mecanica_Analitica I'])
+Electrodinamica_I=subject(3,['Matematicas_especiales_I_para_fisica','Electricidad_y_magnetismo'])
+Matematicas_especiales_II_para_fisica=subject(3,['Calculo_de_ecuaciones_diferenciales_ordinarias','Matematicas_especiales_I_para_fisica'])
+Optativa_Electronica_e_instrumentacion=subject(3,['Mediciones_electromagneticas'])
+
+#SEMESTRE VI
+Termodinamica_modulo_experimental=subject(2,['Mediciones_electromagneticas'],['Termodinamica_modulo_de_teoria'])
+Termodinamica_modulo_de_teoria=subject(2,['Electricidad_y_magnetismo'])
+Electrodinamica_II=subject(3,['Electrodinamica_I'])
+Mecanica_cuantica_I=subject(4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
+Optativa_Herramientas_matematicas_y_computacionales=subject(3,['Optativa_Programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
+
+#SEMESTRE VII
+Mediciones_en_optica_y_acustica=subject(3,['Oscilaciones_y_ondas'])
+Mecanica_estadistica=subject(3,['Mecanica_cuantica_I','Termodinamica_modulo_de_teoria'])
+Temas_de_fisica_contemporanea=subject(1,['Experimentos_en_fisica_moderna'])
+Mecanica_cuantica_II=subject(3,['Mecanica_cuantica_I'])
+Fluidos_y_optica=subject(3,['Oscilaciones_y_ondas','Calculo_vectorial'])
+
+#SEMESTRE VIII
+Aplicaciones_de_fisica_moderna=subject(3,['Introduccion_al_estado_solido'])
+Introduccion_al_estado_solido=subject(3,['Mecanica_estadistica'])
+Introduccion_a_la_subatomica=subject(3,['Mecanica_cuantica_II'])
+Libre_eleccion_II=subject(4,[])
+Libre_eleccion_III=subject(4,[])
+
+#SEMESTRE IX	
+Introduccion_a_la_investigacion_experimental_o_teorica=subject(3,[])	
+Libre_eleccion_IV=subject(4,[])	
+Libre_eleccion_V=subject(4,[])	
+Libre_eleccion_VI=subject(4,[])	
+Libre_eleccion_VII=subject(4,[])	
+
+#SEMESTRE X	
+Trabajo_de_grado=subject(8,[])
+Libre_eleccion_VIII=subject(4,[])
 
 #-------------------------------------------------
 
@@ -185,16 +252,16 @@ class Pensum(GridLayout, Screen):
         self.cols = 2
 
         # Lista dde materias del pensum
-        self.materias=['Algebra_lineal','Calculo_diferencial','Fundamentos_de_fisica_teorica','Fundamentos_de_fisica_experimental','Taller_de_matematicas_y_ciencias',
-          'Calculo_integral','Calculo_vectorial','Mecanica_Newtoniana','Mediciones_mecanicas','Optativa_formación_integral_y_humanistica',
+        self.materias=['Fundamentos_de_fisica_experimental','Fundamentos_de_fisica_teorica','Calculo_diferencial_en_una_variable','Taller_de_matematicas_y_ciencias','Algebra_lineal_basica',
+          'Libre_eleccion_I','Mediciones_mecanicas','Mecanica_newtoniana','Calculo_integral_en_una_variable','Calculo_vectorial','Optativa_formación_integral_y_humanistica',
           'Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
-          'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
+          'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa_formacion_integral_y_humanistica','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
           'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
           'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
-          'Mecanica_Cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
+          'Mecanica_cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
           'Temas_de_fisica_contemporanea','Mecanica_cuantica_II','Fluidos_y_optica','Aplicaciones_de_fisica_moderna','Introduccion_al_estado_solido',
           'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
-          'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado']
+          'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado','Libre_eleccion_VIII']
        
         #Crea los checkbox
         for i in self.materias:
@@ -573,71 +640,3 @@ class materias:
         for x in self.materias:
             a = a + x.__dict__.get('creditos')
         return 15, round(float(a/15))
-
-#SEMESTRE I
-Algebra_lineal=subject(4, [])
-Calculo_diferencial=subject(4, [])
-Fundamentos_de_fisica_teorica=subject(3, [])
-Fundamentos_de_fisica_experimental=subject(3, [])
-Taller_de_matematicas_y_ciencias=subject(3, [])
-
-#SEMESTRE II
-Calculo_integral=subject(4, ['Calculo_diferencial'])
-Calculo_vectorial=subject(4, [], ['Calculo_integral'])
-Mecanica_Newtoniana=subject(4, ['Fundamentos_de_fisica_teorica'])
-Mediciones_mecanicas=subject(3, ['Fundamentos_de_fisica_experimental'])
-Optativa_formación_integral_y_humanistica=subject(3, [])
-
-#SEMESTRE III
-Mediciones_electromagneticas=subject(3,[],['Fundamentos_de_fisica_experimental'])
-Electricidad_y_magnetismo=subject(3,[],['Calculo_integral', 'Calculo_vectorial'])
-Optativa_programacion_y_metodos_numericos=subject(3,[],['Algebra_lineal'])
-Optativa_estadistica_basica=subject(3,['Calculo_diferencial'])
-Calculo_de_ecuaciones_diferenciales_ordinarias=subject(4,['Calculo_integral'])
-
-#SEMESTRE IV
-Optativa=subject(3,[])
-Mecanica_analitica_I=subject(3,['Mecanica_newtoniana'])
-Oscilaciones_y_ondas=subject(3,['Mecanica_newtoniana'])
-Matematicas_especiales_I_para_fisica=subject(3,['Calculo_de_ecuaciones_diferenciales_ordinarias'])
-Relatividad=subject(3,['Electricidad_y_magnetismo'])
-
-#SEMESTRE V
-Experimentos_de_fisica_moderna=subject(3,['Fundamentos_de_fisica_experimental'],['Oscilaciones_y_ondas'])
-Mecanica_analitica_II=subject(3,['Mecanica_Analitica I'])
-Electrodinamica_I=subject(3,['Matematicas_especiales_I_para_fisica','Electricidad_y_magnetismo'])
-Matematicas_especiales_II_para_fisica=subject(3,['Calculo_de_ecuaciones_diferenciales_ordinarias','Matematicas_especiales_I_para_fisica'])
-Optativa_Electronica_e_instrumentacion=subject(3,['Mediciones_electromagneticas'])
-
-#SEMESTRE VI
-Termodinamica_modulo_experimental=subject(2,['Mediciones_electromagneticas'],['Termodinamica_modulo_de_teoria'])
-Termodinamica_modulo_de_teoria=subject(2,['Electricidad_y_magnetismo'])
-Electrodinamica_II=subject(3,['Electrodinamica_I'])
-Mecanica_cuantica_I=subject(4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
-Optativa_herramientas_matematicas_y_computacionales=subject(3,['Optativa_Programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
-
-
-#SEMESTRE VII
-Mediciones_en_optica_y_acustica=(3,['Oscilaciones_y_ondas'])
-Mecanica_estadistica=(3,['Mecanica_cuantica_I','Termodinamica_modulo_de_teoria'])
-Temas_de_fisica_contemporanea=(1,['Experimentos_en_fisica_moderna'])
-Mecanica_cuantica_II=(3,['Mecanica_cuantica_I'])
-Fluidos_y_optica=(3,['Oscilaciones_y_ondas','Calculo_vectorial'])
-
-#SEMESTRE VIII
-Aplicaciones_de_fisica_moderna=(3,['Introduccion_al_estado_solido'])
-Introduccion_al_estado_solido=(3,['Mecanica_estadistica'])
-Introduccion_a_la_subatomica=(3,['Mecanica_cuantica_II'])
-Libre_eleccion_II=(4,[])
-Libre_eleccion_III=(4,[])
-
-#SEMESTRE IX	
-Introduccion_a_la_investigacion_experimental_o_teorica=subject(3,[])	
-Libre_eleccion_IV=subject(4,[])	
-Libre_eleccion_V=subject(4,[])	
-Libre_eleccion_VI=subject(4,[])	
-Libre_eleccion_VII=subject(4,[])	
-
-#SEMESTRE X	
-Trabajo_de_grado=subject(8,[])
-Libre_eleccion_VII=subject(4,[])
