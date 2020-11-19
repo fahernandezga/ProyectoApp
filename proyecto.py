@@ -8,6 +8,13 @@ materias=['Fundamentos_de_fisica_experimental','Fundamentos_de_fisica_teorica','
           'Temas_de_fisica_contemporanea','Mecanica_cuantica_II','Fluidos_y_optica','Aplicaciones_de_fisica_moderna','Introduccion_al_estado_solido',
           'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
           'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado','Libre_eleccion_VIII']
+
+class subject:
+    def __init__(self, creditos, lista_de_prerrequisitos, lista_de_correquisitos=[]):
+        self.creditos=creditos
+        self.lista1=lista_de_prerrequisitos
+        self.lista2=lista_de_correquisitos
+
 #SEMESTRE I
 Fundamentos_de_fisica_experimental=subject(3, [])
 Fundamentos_de_fisica_teorica=subject(3, [])
