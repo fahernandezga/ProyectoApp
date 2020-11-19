@@ -598,3 +598,53 @@ class materias:
                 valcorrequisitos[materias2.index(i)]=self.criterio2
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
+
+#Función para eliminar materias-corregida:
+
+class Pensum(GridLayout, Screen):
+ 
+    def __init__(self, **kwargs):
+ 
+        super(Pensum, self).__init__(**kwargs)
+ 
+        # 2 columnas
+        self.cols = 2
+
+        # Lista dde materias del pensum
+        self.materias=['Fundamentos_de_fisica_experimental','Fundamentos_de_fisica_teorica','Calculo_diferencial_en_una_variable','Taller_de_matematicas_y_ciencias','Algebra_lineal_basica',
+          'Libre_eleccion_I','Mediciones_mecanicas','Mecanica_newtoniana','Calculo_integral_en_una_variable','Calculo_vectorial','Optativa_formación_integral_y_humanistica',
+          'Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
+          'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa_formacion_integral_y_humanistica','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
+          'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
+          'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
+          'Mecanica_cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
+          'Temas_de_fisica_contemporanea','Mecanica_cuantica_II','Fluidos_y_optica','Aplicaciones_de_fisica_moderna','Introduccion_al_estado_solido',
+          'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
+          'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado','Libre_eleccion_VIII']
+       
+        #Crea los checkbox
+        for i in self.materias:
+            self.add_widget(Label(text= i))
+            active = CheckBox()
+            self.add_widget(active)
+            active.bind(active = self.on_checkbox_Active)
+                                                             
+        i=0
+        for self.active in self.children:        
+            self.active.id=int(i/2)
+            i=i+1            
+           
+        #Crea el botón
+        self.continuar = Button(text="Continuar", background_color=(155,0,51,53))
+        self.continuar.bind(on_press=self.onButtonPress)
+        self.add_widget(self.continuar)
+         
+ #----------------------------------------
+ 
+  # Función que elimina las materias clickeadas de la lista
+    def on_checkbox_Active(self, checkboxInstance, isActive):
+        if isActive: 
+            self.materias.pop(self.active.id)
+        else: 
+           pass
+        print(self.materias)
