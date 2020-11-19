@@ -17,11 +17,11 @@ BoxLayout:
         ActionView:
             ActionPrevious:
             ActionButton:
-                text: 'Home'
+                text: 'Inicio'
                 on_press: root.manager.current = 'screen_home'
 
             ActionButton:
-                text: 'Add New'
+                text: 'Agregar tarea'
                 on_press: root.manager.current = 'screen_add'
 
 <AddNewForm>:
@@ -67,4 +67,4 @@ BoxLayout:
 <AddScreen>:
     BoxLayout:
         Label:
-            text: "Add to list"
+            text: "Agrega una tarea"
