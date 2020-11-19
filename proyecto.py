@@ -194,8 +194,10 @@ if __name__ == '__main__':
 -----------------------------------------------------------------------------------
 
 #Función para leer prerrequisitos
+import random as rn
 materias2=[]    
 materias3=[]
+valcorrequisitos=[]
 LineasCampo=[]
 class materias:
     def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,Linea=0):
@@ -204,9 +206,11 @@ class materias:
         self.prerrequisitos=pre
         self.correquisitos=co
         self.criterio=criterio
+        self.criterio2=0
         self.linea=linea
         LineasCampo.append(self.linea_val())
         materias3.append(self.criterio_val())
+        valcorrequisitos.append(self.criterio2)
         self.__str__()
         self.orden()
     def criterio_val(self):
@@ -222,16 +226,22 @@ class materias:
             self.linea=len(LineasCampo)+1
             LineasCampo[-1]=self.linea_val()
           else:
-                  for n in materias2:
-                      for i in range(len(self.prerrequisitos)):
-                          if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
-                              self.criterio=self.criterio+materias3[materias2.index(n)]+1
-                              materias3[-1]=self.criterio_val()
-                              self.linea=LineasCampo[materias2.index(n)]
-                              LineasCampo[-1]=self.linea_val()
-                    
+             for n in materias2:
+                for i in range(len(self.prerrequisitos)):
+                   if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
+                       self.criterio=self.criterio+materias3[materias2.index(n)]+1
+                       materias3[-1]=self.criterio_val()
+                       self.linea=LineasCampo[materias2.index(n)]
+                       LineasCampo[-1]=self.linea_val()                  
+          if len(self.correquisitos)!=0:            
+            self.criterio2=rn.random()
+            valcorrequisitos[-1]=self.criterio2
+            for i in self.correquisitos:
+                valcorrequisitos[materias2.index(i)]=self.criterio2
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
+
+
 #Función para repartir los créditos por semestre
  def onButtonPress1(self,button):
         a = 0
