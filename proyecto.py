@@ -358,52 +358,96 @@ class Pensum(GridLayout, Screen):
         self.boton15.bind(on_press= self.onButtonPress15)
         
         
-  
-    def onButtonPress1(self,button):
+     def onButtonPress1(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(1))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(1, a)
     def onButtonPress2(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(2))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(2, round(float(a/2)))
     def onButtonPress3(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(3))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(3, round(float(a/3)))
     def onButtonPress4(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(4))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(4, round(float(a/4)))
     def onButtonPress5(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(5))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(5, round(float(a/5)))
     def onButtonPress6(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(6))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(6, round(float(a/6)))
     def onButtonPress7(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(7))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(7, round(float(a/7)))
     def onButtonPress8(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(8))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(8, round(float(a/8)))
     def onButtonPress9(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(9))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(9, round(float(a/9)))
     def onButtonPress10(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(10))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(10, round(float(a/10)))
     def onButtonPress11(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(11))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(11, round(float(a/11)))
     def onButtonPress12(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(12))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(12, round(float(a/12)))
     def onButtonPress13(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(13))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(13, round(float(a/13)))
     def onButtonPress14(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(14))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(14, round(float(a/14)))
     def onButtonPress15(self,button):
+        a = 0
         self.popup.dismiss()
-        print(int(15))
+        for x in self.materias:
+            a = a + eval(x).__dict__.get('creditos')
+        print(15, round(float(a/15)))
   
 
 class MenuScreen(Screen):
@@ -547,96 +591,3 @@ class materias:
                 valcorrequisitos[materias2.index(i)]=self.criterio2
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
-
-
-#Función para repartir los créditos por semestre
- def onButtonPress1(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 1, a
-    def onButtonPress2(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 2, round(float(a/2))
-    def onButtonPress3(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 3, round(float(a/3))
-    def onButtonPress4(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 4, round(float(a/4))
-    def onButtonPress5(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 5, round(float(a/5))
-    def onButtonPress6(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 6, round(float(a/6))
-    def onButtonPress7(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 7, round(float(a/7))
-    def onButtonPress8(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 8, round(float(a/8))
-    def onButtonPress9(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 9, round(float(a/9))
-    def onButtonPress10(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 10, round(float(a/10))
-    def onButtonPress11(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 11, round(float(a/11))
-    def onButtonPress12(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 12, round(float(a/12))
-    def onButtonPress13(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 13, round(float(a/13))
-    def onButtonPress14(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 14, round(float(a/14))
-    def onButtonPress15(self,button):
-        a = 0
-        self.popup.dismiss()
-        for x in self.materias:
-            a = a + x.__dict__.get('creditos')
-        return 15, round(float(a/15))
