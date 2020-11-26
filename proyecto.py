@@ -480,21 +480,21 @@ if __name__ == '__main__':
 
 ########################OBRA NEGRA
 #texto agregado
-class AddNewForm(Widget):
-    texto_agregado = ObjectProperty(None)
-
+class AgregarTexto(Widget):
+    texto_ingresado = ObjectProperty(None)
     input = StringProperty('')
-
     store = JsonStore("data.json")
 
-    def submit_imput(self):
-        self.input = self.texto_agregado.text
+    def subir_input(self):
+        self.input = self.texto_ingresado.text
         print("Assign input: {}".format(self.input))
-        self.save()
-        self.input = ''
+        self.guardar()
+        self.input =''
 
-    def save(self):
+    def guardar(self):
         self.store.put(self.input)
+
+
 
 
 #organizar la lista
@@ -503,21 +503,40 @@ class Menu(BoxLayout):
 
 
 #vista de la pantalla
-class MyRecycleView(RecycleView):
-
+class VistaPantalla(RecycleView):
     def __init__(self, **kwargs):
-        super(MyRecycleView, self).__init__(**kwargs)
-        self.load_data()
-        Clock.schedule_interval(self.load_data, 1)
+        super(VistaPantalla, self).__init__(**kwargs)
+        self.leer_datos()
+        Clock.schedule_interval(self.leer_datos, 1)
 
 #mostrar la informacion recibida
-    def load_data(self, *args):
+    def leer_datos(self, *args):
         store = JsonStore("data.json")
         lista_datos = []
         for i in store:
             lista_datos.append({'text': i})
 
         self.data = lista_datos
+
+
+# configuración pantalla dispositivo
+class PantallaPrincipal(Screen):
+    pass
+
+
+class PantallaAdicional(Screen):
+    def __init__(self, **kwargs):
+        super(PantallaAdicional, self).__init__(**kwargs)
+        self.addNewForm = AgregarTexto()
+        self.add_widget(self.addNewForm)
+
+
+#permite ver varias pantallas
+class Pantallas(ScreenManager):
+    pantalla_principal = ObjectProperty(None)
+    pantalla_adicional = ObjectProperty(None)
+
+
 
 #Calendario aún en proceso u.u
 from kivy.app import App
@@ -623,26 +642,6 @@ class HomeScreen(Screen):
     pass
 ---------------------------
 
-class AddScreen(Screen):
-    def __init__(self, **kwargs):
-        super(AddScreen, self).__init__(**kwargs)
-        self.addNewForm = AddNewForm()
-        self.add_widget(self.addNewForm)
-
-
-#permite ver varias pantallas
-class ScreenManagement(ScreenManager):
-    screen_home = ObjectProperty(None)
-    screen_add = ObjectProperty(None)
-
-
-class TodoApp(App):
-    pass
-    #def build(self):
-     #   return Menu()
-
-if __name__ == '__main__':
-    TodoApp().run()
 
 ######################OBRA NEGRA
 
