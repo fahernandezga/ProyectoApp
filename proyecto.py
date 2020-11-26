@@ -558,7 +558,7 @@ materias3=[]
 valcorrequisitos=[]
 LineasCampo=[]
 class materias:
-    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,Linea=0):
+    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,Linea=[0]):
         self.nombre=nom
         self.creditos=cre
         self.prerrequisitos=pre
@@ -580,18 +580,28 @@ class materias:
         if cadena not in materias2:
             materias2.append(cadena)
     def orden(self):
-          if len(self.prerrequisito)==0:
+        if len(self.prerrequisito)==0:
             self.linea=len(LineasCampo)+1
-            LineasCampo[-1]=self.linea_val()
-          else:
+            LineasCampo[-1]=self.linea_val
+        if len(self.prerrequisitos)==1:
              for n in materias2:
                 for i in range(len(self.prerrequisitos)):
                    if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
                        self.criterio=self.criterio+materias3[materias2.index(n)]+1
                        materias3[-1]=self.criterio_val()
                        self.linea=LineasCampo[materias2.index(n)]
-                       LineasCampo[-1]=self.linea_val()                  
-          if len(self.correquisitos)!=0:            
+                       LineasCampo[-1]=self.linea_val()
+         if len(self.prerrequisitos)>1:
+            self.linea.remove(0)
+            for n in materias2:
+                for i in range(len(self.prerrequisitos)):
+                    if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
+                        self.criterio=self.criterio+materias3[materias2.index(n)]+1
+                        materias3[-1]=self.criterio_val()
+                        self.linea.append(LineasCampo[materias2.index(n)])
+                        LineasCampo[-1]=self.linea_val()
+     
+         if len(self.correquisitos)!=0:            
             self.criterio2=rn.random()
             valcorrequisitos[-1]=self.criterio2
             for i in self.correquisitos:
