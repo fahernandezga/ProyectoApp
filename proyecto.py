@@ -508,11 +508,16 @@ class EliminarTarea(GridLayout, Screen):
             self.add_widget(self.active)
             self.active.bind(active = self.on_checkbox_Active)
             
-    def eliminar_datos(self, *args):
+    def eliminar_datos(self, checkboxInstance, value):
         store = JsonStore("data.json")
-        for i in store: 
-            store.pop(i)
-            break 
+        if value:
+            for i in store: 
+                store.pop(i)
+                break 
+            self.store.pop()
+        else:
+           pass
+        print(self.store)
 ##########falta corregir
 
 #organizar la lista
