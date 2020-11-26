@@ -708,6 +708,64 @@ class materias:
     def __gt__(self, otro): #para utilizar el sorted(materias)
         return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
 
+#Función para organizar las materias
+
+def ordenarcriterio1(x,y,z):
+    for i in range(len(x)-1):
+      for j in range(i+1,len(x)):
+        if x[i] > x[j]:
+          x[i],x[j] = x[j],x[i]
+          y[i],y[j] = y[j],y[i]
+          z[i],z[j] = z[j],z[i]
+    return x,y,z
+li,li2,li3=ordenarcriterio1(materias3,materias2,LineasCampo)
+def mallacurricular(x,a,b,c):
+    m_organize=[]
+    c_organize=[]
+    l_organize=[]
+    materiaslist=a*1
+    criterio1=b*1
+    lincamp=c*1
+    n=0
+    v=len(materiaslist)
+    while len(m_organize)<v:
+        #print(m_organize)
+        i=materiaslist[0]
+        while n<x:
+            if c_organize==[] or criterio1[0]==criterio1[-1]:
+                 m_organize.append(i)
+                 l_organize.append(materiaslist.index(i))
+                 c_organize.append(materiaslist.index(i))
+                 n+=1      
+                 criterio1.pop(materiaslist.index(i))
+                 lincamp.pop(materiaslist.index(i))
+                 materiaslist.remove(i)
+            elif c_organize[-1]<=criterio1[materiaslist.index(i)]:
+                if lincamp[materiaslist.index(i)] not in l_organize[len(l_organize)-n:]:
+                    m_organize.append(i)
+                    l_organize.append(materiaslist.index(i))
+                    c_organize.append(materiaslist.index(i))
+                    criterio1.pop(materiaslist.index(i))
+                    lincamp.pop(materiaslist.index(i))
+                    materiaslist.remove(i)
+                    n+=1
+            else:
+                materiaslist.append(i)
+                criterio1.append(materiaslist.index(i))
+                lincamp.append(materiaslist.index(i))
+                criterio1.pop(materiaslist.index(i))
+                lincamp.pop(materiaslist.index(i))  
+                materiaslist.remove(i)
+            if criterio1==[]:
+                break
+            else:
+               i=materiaslist[0]
+        n=0
+    return m_organize
+
+
+
+-----------------------------------------------------------------------------------
 #Función para eliminar materias-corregida:
 
 class Pensum(GridLayout, Screen):
