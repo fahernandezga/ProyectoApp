@@ -592,8 +592,10 @@ class materias:
                        self.linea=LineasCampo[materias2.index(n)]
                        LineasCampo[-1]=self.linea_val()
          if len(self.prerrequisitos)>1:
-            self.linea.remove(0)
-            for n in materias2:
+           if 0 in self.linea:
+                    self.linea.remove(0)
+
+           for n in materias2:
                 for i in range(len(self.prerrequisitos)):
                     if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
                         self.criterio=self.criterio+materias3[materias2.index(n)]+1
