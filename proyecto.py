@@ -519,11 +519,109 @@ class MyRecycleView(RecycleView):
 
         self.data = lista_datos
 
+#Calendario aún en proceso u.u
+from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
+from kivy.properties import NumericProperty
+from kivy.uix.gridlayout import GridLayout
+import calendar
 
+
+class Calendar(Popup):
+    day = NumericProperty()
+    month = NumericProperty()
+    year = NumericProperty()
+    root = BoxLayout(orientation = "vertical")
+    
+    def __init__(self, **kwargs):
+        # make sure we aren't overriding any important functionality
+        super(Popup, self).__init__(**kwargs)
+
+        self.add_widget(self.root)
+        self.crearcalendario()
+
+    def crearcalendario(self):
+        self.day_str = [ 'L', 'M', 'Mc', 'J', 'V', 'S', 'D' ]
+        self.month_str = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ]
+    
+        self.dy = calendar.monthcalendar(self.year, self.month)
+        self.title = (self.month_str[self.month-1] + ", " + str(self.year) )        
+        
+        layout = GridLayout(cols=7)  
+        
+        # Poner nombres de días
+        #      
+        for d in self.day_str:
+            b = Label(text = '[b]'+d+'[/b]' , markup=True )
+            layout.add_widget(b)
+         
+        # Llenar el calendario con calendar.monthcalendar
+        #    
+        for wk in range(len(self.dy)):
+            for d in range(0,7):    
+                dateOfWeek = self.dy[wk][d]
+                if not dateOfWeek == 0:
+                    b = Button(text = str(dateOfWeek))
+                    b.bind(on_release = self.fecha)
+                else:
+                    b = Label(text = '' )
+                layout.add_widget(b)
+                
+        if self.root:
+            self.root.clear_widgets()
+        self.root.add_widget(layout)
+        botonesabajo = BoxLayout(orientation = "horizontal", size_hint = (1,None), height = 40)
+        botonesabajo.add_widget(Button(text = '<', on_release = self.cambiarmes))
+        botonesabajo.add_widget(Button(text = '>', on_release = self.cambiarmes))
+        self.root.add_widget(botonesabajo)
+        
+    def cambiarmes(self, event):
+        if event.text == '>':
+            if self.month == 12:
+                self.month = 1
+                self.year = self.year + 1
+            else:
+                self.month = self.month + 1
+        elif event.text == '<':
+            if self.month == 1:
+                self.month = 12
+                self.year = self.year - 1
+            else:
+                self.month = self.month - 1
+        
+    def fecha(self, event):
+        self.day = int(event.text)
+        self.dismiss()
+
+
+
+class MyCalendar(App):
+    def build(self):
+        # Target Month and Year to display
+        #
+        self.popup = Calendar(month = 11, year = 2020,
+            size_hint=(None, None), size=(500, 400))
+        self.popup.bind(on_dismiss = self.on_dismiss)
+        return Button(text = "Show calendar", on_release = self.mostrar)
+    
+    def mostrar(self, event):
+        # Create Popup
+        #                 
+        self.popup.open()
+
+    def on_dismiss(self, arg):
+        # Do something on close of popup
+        print ("Fecha: ", str(self.popup.day) + '/' + str(self.popup.month) + '/' + str(self.popup.year) )
+
+if __name__ == "__main__":
+    MyCalendar().run()   
 # configuración pantalla dispositivo
 class HomeScreen(Screen):
     pass
-
+---------------------------
 
 class AddScreen(Screen):
     def __init__(self, **kwargs):
