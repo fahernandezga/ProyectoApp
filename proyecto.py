@@ -478,7 +478,7 @@ if __name__ == '__main__':
 
 
 
-########################OBRA NEGRA
+#---------------------TO DO LIST
 #texto agregado
 class AgregarTexto(Widget):
     texto_ingresado = ObjectProperty(None)
@@ -495,7 +495,25 @@ class AgregarTexto(Widget):
         self.store.put(self.input)
 
 
-
+######falta corregir
+class EliminarTarea(GridLayout, Screen):
+    def __init__(self, **kwargs):
+        super(VistaPantalla, self).__init__(**kwargs)
+        self.eliminar_datos()
+        Clock.schedule_interval(self.eliminar_datos, 1)
+        
+        for i in self.materias:
+            self.add_widget(Label(text= i))
+            self.active = CheckBox()
+            self.add_widget(self.active)
+            self.active.bind(active = self.on_checkbox_Active)
+            
+    def eliminar_datos(self, *args):
+        store = JsonStore("data.json")
+        for i in store: 
+            store.pop(i)
+            break 
+##########falta corregir
 
 #organizar la lista
 class Menu(BoxLayout):
@@ -536,7 +554,7 @@ class Pantallas(ScreenManager):
     pantalla_principal = ObjectProperty(None)
     pantalla_adicional = ObjectProperty(None)
 
-
+#----------------TO DO LIST
 
 #Calendario aún en proceso u.u
 from kivy.app import App
