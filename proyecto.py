@@ -170,6 +170,10 @@ class SaludMental(GridLayout, Screen):
         self.Sueño = Button(text="Sueño", background_color=(0,155,0,53))
         self.Sueño.bind(on_press=self.btnSueño)
         self.add_widget(self.Sueño)
+          
+        self.RegistrodeAnimo = Button(text="Registro de Animo", background_color=(0,155,0,53))
+        self.RegistrodeAnimo.bind(on_press=self.btnAnimo)
+        self.add_widget(self.RegistrodeAnimo)
         
     def btnestudio(self, button): 
           
@@ -247,7 +251,36 @@ class SaludMental(GridLayout, Screen):
                       content = layout,
                       size_hint=(None, None), size=(400, 400))   
         self.popup.open()    
-        self.closeButton.bind(on_press = self.popup.dismiss)  
+        self.closeButton.bind(on_press = self.popup.dismiss)
+                              
+    def btnAnimo(self, button): 
+          
+        layout = GridLayout(cols = 1) 
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50)) 
+        layout.add_widget(self.closeButton) 
+        self.popup = Popup(title ='Registro de Animo', 
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))   
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)
+  
+        self.popupLabel = Label(text = "¿Cuál ha sido tu estado de ánimo el día de hoy?")
+        
+        self.botona1 = Button(text = "Feliz",background_color=(155,0,51,53))
+        self.botona2 = Button(text = "Cansado",background_color=(100,0,30,53))
+        self.botona3 = Button(text = "Triste",background_color=(155,0,10,53))
+        self.botona4 = Button(text = "Abrumado")
+        self.botona5 = Button(text = "Enojado",background_color=(155,0,0,53))
+        
+        
+        self.closeButton = Button(text = "Volver a la ventana anterior")
+        
+        layout.add_widget(self.popupLabel) 
+        layout.add_widget(self.botona1)
+        layout.add_widget(self.botona2)
+        layout.add_widget(self.botona3)
+        layout.add_widget(self.botona4)
+        layout.add_widget(self.botona5)
         
 class Pensum(GridLayout, Screen):
  
