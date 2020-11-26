@@ -303,9 +303,9 @@ class Pensum(GridLayout, Screen):
           'Introduccion_a_la_investigacion_experimental_o_teorica','Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Libre_eleccion_IV',
           'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado','Libre_eleccion_VIII']
         if value:
-            print(self.materias.pop(checkbox.id))
+            self.materias.pop(checkbox.id)
         else: 
-            self.materias.append(materias[checkbox.id])
+            self.materias.insert(checkbox.id, materias[checkbox.id])
         print(self.materias)
              
      #Cuando se oprima el botón 'siguiente', muestra un popup para escoger los semestres
