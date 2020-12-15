@@ -714,10 +714,79 @@ class HomeScreen(Screen):
 ---------------------------
 
 
-######################OBRA NEGRA
-
-
 -----------------------------------------------------------------------------------
+#Función prerrequisitos, campo, criterio ##############################
+
+materias2=[]    ####prueba para matriz
+CriteriosLista=[]
+LineasCampo=[]
+Semestre=[]
+class materias:
+    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,linea=[0]):
+        self.nombre=nom
+        self.creditos=cre
+        self.prerrequisitos=pre
+        self.correquisitos=co
+        self.criterio=criterio
+        self.linea=linea
+        CriteriosLista.append(self.criterio_val())
+        LineasCampo.append(self.linea_val())
+        self.__str__()
+        self.orden()
+    def criterio_val(self):
+        return self.criterio
+    def linea_val(self):
+    #    if len(self.prerrequisitos)==1:
+     #       return self.linea[0]
+      #  else:
+        #  for n in len(self.prerrequisitos):
+            return self.linea
+            
+    def __str__(self):
+        cadena=self.nombre
+        if cadena not in materias2:
+            materias2.append(cadena)
+    def orden(self):
+        if len(self.prerrequisitos)==0:
+          self.linea=[len(LineasCampo)+1]
+          LineasCampo[-1]=self.linea_val() 
+        elif len(self.prerrequisitos)==1:
+          for n in materias2:
+                for i in range(len(self.prerrequisitos)):
+                    if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
+                        self.criterio=self.criterio+CriteriosLista[materias2.index(n)]+1
+                        CriteriosLista[-1]=self.criterio_val()
+                        self.linea=LineasCampo[materias2.index(n)]
+                        LineasCampo[-1]=self.linea_val()
+        else:
+          if 0 in self.linea:
+            self.linea.remove(0)
+          for n in materias2:
+                for i in range(len(self.prerrequisitos)):
+                    if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
+                        self.criterio=self.criterio+CriteriosLista[materias2.index(n)]+1
+                        CriteriosLista[-1]=self.criterio_val()
+                        self.linea.append(LineasCampo[materias2.index(n)])
+
+                        LineasCampo[-1]=self.linea_val()
+
+    def ordenando(self):
+      for i in range(LineasCampo):
+        for j in range(LineasCampo[i]):
+          for k in range(lineasCampo):
+            for l in range(lineasCampo[k]):
+              if LineasCampo[i][j]==LineasCampo[k][l] and i != k:
+                Semestre.append(materias2[i])
+                Semestre.append(materias2[k])
+            
+
+                    
+                    
+    def _gt_(self, otro): #para utilizar el sorted(materias)
+        return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
+
+
+##############################################
 
 #Función para leer prerrequisitos
 import random as rn
