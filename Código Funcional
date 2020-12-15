@@ -312,7 +312,7 @@ class Pensum(GridLayout, Screen):
           'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado','Libre_eleccion_VIII']
 
         if value:
-            MateriasNombres.remove(materias[checkbox.id])
+            MateriasNombres.remove(MateriasNombres[checkbox.id])
 
         else:
             MateriasNombres.insert(checkbox.id, materias[checkbox.id])
