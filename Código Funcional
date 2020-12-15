@@ -190,7 +190,9 @@ Trabajo_de_grado=subject("Trabajo_de_grado",8,[])
 Libre_eleccion_VIII=subject("Libre_eleccion_VIII",4,[])
 
 
-semestre_1=[] 
+
+
+semestre_1=[] ####esteeee mejor
 semestre_2=[]
 semestre_3=[]
 semestre_4=[]
@@ -624,7 +626,6 @@ class Pensum(GridLayout, Screen):
           layout.cols=c+1
         
         
-
 class SaludMental(GridLayout, Screen):
     def __init__(self, **kwargs):
         # super function can be used to gain access  
@@ -724,7 +725,8 @@ class SaludMental(GridLayout, Screen):
         self.closeButton.bind(on_press = self.popup.dismiss)  
        
 
-        
+         
+       
 
 class MenuScreen(Screen):
     pass
