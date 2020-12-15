@@ -1,0 +1,73 @@
+import random as rn
+
+semestre_1=[]
+semestre_2=[]
+semestre_3=[]
+semestre_4=[]
+semestre_5=[]
+semestre_6=[]
+semestre_7=[]
+semestre_8=[]
+semestre_9=[]
+semestre_10=[]
+semestre_11=[]
+semestre_12=[]
+semestre_13=[]
+semestre_14=[]
+semestre_15=[]
+semestres=[semestre_1, semestre_2, semestre_3,  semestre_4,  semestre_5,  semestre_6,  semestre_7,  semestre_8,  semestre_9,  semestre_10,  semestre_11,  semestre_12,  semestre_13,  semestre_14,  semestre_15]
+
+
+MateriasNombres=[] 
+CriteriosLista=[]
+LineasCampo=[]
+Creditos=[]
+
+class subject:
+    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,linea=[0]):
+        self.nombre=nom
+        self.credito=cre
+        self.prerrequisitos=pre
+        self.correquisitos=co
+        self.criterio=criterio
+        self.linea=linea
+        MateriasNombres.append(self.nombre)
+        Creditos.append(self.credito)
+
+        if self.prerrequisitos==[]:
+          self.criterio=1
+          CriteriosLista.append(self.criterio)
+        elif len(self.prerrequisitos)==1:
+          Pre_temp=self.prerrequisitos[0]
+          self.criterio=CriteriosLista[MateriasNombres.index(Pre_temp)]+1
+          CriteriosLista.append(self.criterio)
+        elif len(self.prerrequisitos)>1:
+          self.criterio=1
+          for i in range (0,len(self.prerrequisitos)-1):
+            Pre_temp=self.prerrequisitos[i]
+            self.criterio=self.criterio+CriteriosLista[MateriasNombres.index(Pre_temp)]
+          CriteriosLista.append(self.criterio)
+
+        if self.prerrequisitos==[]:
+          self.linea=len(LineasCampo)+1
+          LineasCampo.append(self.linea)
+        elif len(self.prerrequisitos)==1:
+          Pre_temp=self.prerrequisitos[0]
+          self.linea=LineasCampo[MateriasNombres.index(Pre_temp)]
+          LineasCampo.append(self.linea)
+        elif len(self.prerrequisitos)>1:
+          linea_temp_list=[]
+          for i in range (0,len(self.prerrequisitos)-1):
+            Pre_temp=self.prerrequisitos[i]
+            tipo=type(LineasCampo[MateriasNombres.index(Pre_temp)])
+            if tipo==list:
+              for j in range(0,len(LineasCampo[MateriasNombres.index(Pre_temp)])-1):
+                if LineasCampo[MateriasNombres.index(Pre_temp)][j] not in linea_temp_list:
+                  linea_temp_list.append(LineasCampo[MateriasNombres.index(Pre_temp)][j])
+            else:
+              if LineasCampo[MateriasNombres.index(Pre_temp)] not in linea_temp_list:
+                linea_temp_list.append(LineasCampo[MateriasNombres.index(Pre_temp)])
+          if len(linea_temp_list)==1:
+            linea_temp_list=linea_temp_list[0]
+              
+          LineasCampo.append(linea_temp_list)
