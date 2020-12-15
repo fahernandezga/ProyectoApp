@@ -1,0 +1,120 @@
+class SaludMental(GridLayout, Screen):
+    def __init__(self, **kwargs):
+        # super function can be used to gain access  
+        # to inherited methods from a parent or sibling class  
+        # that has been overwritten in a class object.  
+        super(SaludMental, self).__init__(**kwargs)
+        self.cols = 1
+       
+        self.seleccione = Label(text = "¿Sobre qué categoría le gustaría informarse?")
+        self.add_widget(self.seleccione)
+       
+        self.Ejerciciofisico = Button(text="Ejercicio Físico", background_color=(70/255, 255/255, 212/255, 1))
+        self.Ejerciciofisico.bind(on_press=self.btnejercicio)
+        self.add_widget(self.Ejerciciofisico)
+       
+        self.Alimentacion = Button(text="Alimentacion", background_color=(70/255, 255/255, 212/255, 1))
+        self.Alimentacion.bind(on_press=self.btnalimentacion)
+        self.add_widget(self.Alimentacion)
+       
+        self.Relacionessociales = Button(text="Relaciones Sociales", background_color=(70/255, 255/255, 212/255, 1))
+        self.Relacionessociales.bind(on_press=self.btnrelaciones)
+        self.add_widget(self.Relacionessociales)
+       
+        self.Relajacion = Button(text="Relajación", background_color=(70/255, 255/255, 212/255, 1))
+        self.Relajacion.bind(on_press=self.btnrelajacion)
+        self.add_widget(self.Relajacion)
+       
+        self.Sueño = Button(text="Sueño", background_color=(70/255, 255/255, 212/255, 1))
+        self.Sueño.bind(on_press=self.btnSueño)
+        self.add_widget(self.Sueño)
+       
+
+       
+    def btnejercicio(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = "El ejercicio físico nos ayuda, pues promueve la segregación \n de endorfinas y serotonina relacionada con la \n sensación de bienestar. También es un potente distractor de \n las preocupaciones y el dolor. Estudios recientes \n además apuntan a la norepinefrina moduladora \n que se encargaría de regular las reacciones al estrés.")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Ejercicio Físico',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 300))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+   
+    def btnalimentacion(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = "Come mucha fruta y verduras y alimentos ricos en fibra. \n Evita los alimentos grasos o excesivamente azucarados. \n Los alimentos inciden sobre la producción de Serotonina,\n Noradrenalina y Dopamina del cerebro. Todos los alimentos \n que fomenten la producción de estos neurotransmisores \n serán beneficiosos para el estado de ánimo y la salud \n mental: Hay que beber al menos 8 vasos de agua \n al día para mantener el cerebro y el cuerpo \n hidratados y fomentar así sus funciones")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Alimentación',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 400))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+       
+    def btnrelaciones(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = "El contacto social se asocia con la oxitocina, neuropéptido \n que produce sensación de bienestar. Además el apoyo social\n es un factor protector en muchos trastornos psicológicos \n y una gran ayuda en momentos de necesidad. Además se \n asocia con un envejecimiento más favorable. ")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Relaciones Sanas',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 300))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+       
+    def btnrelajacion(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = "Dedica un tiempo para ti. La relajación disminuye \n los efectos dañinos del estrés, reduce la tensión \n muscular, mejora síntomas psicosomáticos y el \n autocontrol. Y proporciona bienestar a la persona.")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Relajación',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 300))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+       
+    def btnSueño(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = " A pesar de que 6,5 son suficientes para rendir bien \n durante el día, el dormir 8 horas permitirá descansar \n el tiempo necesario para nuestra mente y cuerpo.\n Procura ir siempre a dormir a la misma hora y seguir la \n misma rutina antes de ir a dormir. No hagas comidas\n copiosas ni ejercicio justo antes de dormir. No bebas \n alcohol en abundancia pues induce el sueño en un principio \n pero luego provoca despertares a media noche. Procura no \n mirar la tele en la cama. El sueño es muy importante en \n los procesos de aprendizaje y consolidación de memorias,\n ayuda a la concentración, puede ayudar a reducir síntomas \n de estrés y depresión. Pero dormir excesivamente no es \n bueno así que ¡que no se nos vaya de las manos!")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Sueño',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 400))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+       
+
+         
+       
+
+class MenuScreen(Screen):
+    pass
+ 
+   
+# Crea screen manager
+sm = ScreenManager()
+sm.add_widget(MenuScreen(name='menu'))
+sm.add_widget(Pensum(name='pensum'))
+sm.add_widget(SaludMental(name='saludmental'))
+
+
+class NombreTentativo(App):
+    def build(self):
+        return sm
+
+
+if __name__ == '__main__':
+    NombreTentativo().run()
