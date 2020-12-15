@@ -1,0 +1,797 @@
+from kivy.app import App
+from kivy.uix.label import Label
+from kivy.uix.checkbox import CheckBox
+from kivy.uix.button import Button
+from kivy.uix.popup import Popup
+from kivy.uix.gridlayout import GridLayout
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen
+
+Builder.load_string("""
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Mi pensum'
+            font_size: 30
+            height: self.texture_size[1]
+            on_press: root.manager.current = 'pensum'
+            background_color:(1/255,0,51/255,1)
+
+        Button:
+            text: 'Salud Mental'
+            font_size: 30
+            height: self.texture_size[1]
+            on_press: root.manager.current = 'saludmental'
+            background_color:(0.41, 0.42, 0.74, 1)
+
+<Pensum>:
+    BoxLayout:
+        Button:
+            text: 'Devolver'
+            on_press: root.manager.current = 'menu'
+            pos_hint: {'x': 2, 'y': 0}
+            background_color: (0,1,1,1)
+           
+<SaludMental>:
+    BoxLayout:       
+        Button:
+            text: 'Devolver'
+            on_press: root.manager.current = 'menu'
+            pos_hint: {'x': 2, 'y': 0}
+            background_color: (200/255, 255/255, 212/255, 1)
+            size_hint: (None, None)
+            size: (100, 50)
+""")
+
+
+#Función prerrequisitos, campo, criterio ##############################
+
+
+
+semestre_1=[]
+semestre_2=[]
+semestre_3=[]
+semestre_4=[]
+semestre_5=[]
+semestre_6=[]
+semestre_7=[]
+semestre_8=[]
+semestre_9=[]
+semestre_10=[]
+semestre_11=[]
+semestre_12=[]
+semestre_13=[]
+semestre_14=[]
+semestre_15=[]
+semestres=[semestre_1, semestre_2, semestre_3,  semestre_4,  semestre_5,  semestre_6,  semestre_7,  semestre_8,  semestre_9,  semestre_10,  semestre_11,  semestre_12,  semestre_13,  semestre_14,  semestre_15]
+
+
+MateriasNombres=[] 
+CriteriosLista=[]
+LineasCampo=[]
+Creditos=[]
+
+class subject:
+    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,linea=[0]):
+        self.nombre=nom
+        self.credito=cre
+        self.prerrequisitos=pre
+        self.correquisitos=co
+        self.criterio=criterio
+        self.linea=linea
+        MateriasNombres.append(self.nombre)
+        Creditos.append(self.credito)
+
+        if self.prerrequisitos==[]:
+          self.criterio=1
+          CriteriosLista.append(self.criterio)
+        elif len(self.prerrequisitos)==1:
+          Pre_temp=self.prerrequisitos[0]
+          self.criterio=CriteriosLista[MateriasNombres.index(Pre_temp)]+1
+          CriteriosLista.append(self.criterio)
+        elif len(self.prerrequisitos)>1:
+          self.criterio=1
+          for i in range (0,len(self.prerrequisitos)-1):
+            Pre_temp=self.prerrequisitos[i]
+            self.criterio=self.criterio+CriteriosLista[MateriasNombres.index(Pre_temp)]
+          CriteriosLista.append(self.criterio)
+
+        if self.prerrequisitos==[]:
+          self.linea=len(LineasCampo)+1
+          LineasCampo.append(self.linea)
+        elif len(self.prerrequisitos)==1:
+          Pre_temp=self.prerrequisitos[0]
+          self.linea=LineasCampo[MateriasNombres.index(Pre_temp)]
+          LineasCampo.append(self.linea)
+        elif len(self.prerrequisitos)>1:
+          linea_temp_list=[]
+          for i in range (0,len(self.prerrequisitos)-1):
+            Pre_temp=self.prerrequisitos[i]
+            tipo=type(LineasCampo[MateriasNombres.index(Pre_temp)])
+            if tipo==list:
+              for j in range(0,len(LineasCampo[MateriasNombres.index(Pre_temp)])-1):
+                if LineasCampo[MateriasNombres.index(Pre_temp)][j] not in linea_temp_list:
+                  linea_temp_list.append(LineasCampo[MateriasNombres.index(Pre_temp)][j])
+            else:
+              if LineasCampo[MateriasNombres.index(Pre_temp)] not in linea_temp_list:
+                linea_temp_list.append(LineasCampo[MateriasNombres.index(Pre_temp)])
+          if len(linea_temp_list)==1:
+            linea_temp_list=linea_temp_list[0]
+              
+          LineasCampo.append(linea_temp_list)
+#SEMESTRE I
+Fundamentos_de_fisica_experimental=subject("Fundamentos_de_fisica_experimental",3)
+Fundamentos_de_fisica_teorica=subject("Fundamentos_de_fisica_teorica",3)
+Calculo_diferencial_en_una_variable=subject("Calculo_diferencial_en_una_variable",4)
+Taller_de_matematicas_y_ciencias=subject("Taller_de_matematicas_y_ciencias",3)
+Algebra_lineal_basica=subject("Algebra_lineal_basica",4)
+Libre_eleccion_I=subject("Libre_eleccion_I",4)
+
+#SEMESTRE II
+Mediciones_mecanicas=subject("Mediciones_mecanicas",3, ['Fundamentos_de_fisica_experimental'])
+Mecanica_newtoniana=subject("Mecanica_newtoniana",4, ['Fundamentos_de_fisica_teorica'])
+Calculo_integral_en_una_variable=subject("Calculo_integral_en_una_variable",4, ['Calculo_diferencial_en_una_variable'])
+Calculo_vectorial=subject("Calculo_vectorial",4, ['Calculo_integral_en_una_variable'])
+Optativa_formación_integral_y_humanistica=subject("Optativa_formación_integral_y_humanistica",3)
+
+#SEMESTRE III
+Mediciones_electromagneticas=subject("Mediciones_electromagneticas",3,['Fundamentos_de_fisica_experimental'])
+Electricidad_y_magnetismo=subject("Electricidad_y_magnetismo",3,['Calculo_integral_en_una_variable', 'Calculo_vectorial'])
+Optativa_programacion_y_metodos_numericos=subject("Optativa_programacion_y_metodos_numericos",3,[],['Algebra_lineal_basica'])
+Optativa_estadistica_basica=subject("Optativa_estadistica_basica",3,['Calculo_diferencial_en_una_variable'])
+Calculo_de_ecuaciones_diferenciales_ordinarias=subject("Calculo_de_ecuaciones_diferenciales_ordinarias",4,['Calculo_integral_en_una_variable'])
+
+#SEMESTRE IV
+Optativa_formacion_integral_y_humanistica=subject("Optativa_formacion_integral_y_humanistica",3,[])
+Mecanica_analitica_I=subject("Mecanica_analitica_I",3,['Mecanica_newtoniana'])
+Oscilaciones_y_ondas=subject("Oscilaciones_y_ondas",3,['Mecanica_newtoniana'])
+Matematicas_especiales_I_para_fisica=subject("Matematicas_especiales_I_para_fisica",3,['Calculo_de_ecuaciones_diferenciales_ordinarias'])
+Relatividad=subject("Relatividad",3,['Electricidad_y_magnetismo'])
+
+#SEMESTRE V
+Experimentos_de_fisica_moderna=subject("Experimentos_de_fisica_moderna",3,['Fundamentos_de_fisica_experimental','Oscilaciones_y_ondas'])
+Mecanica_analitica_II=subject("Mecanica_analitica_II",3,['Mecanica_analitica_I'])
+Electrodinamica_I=subject("Electrodinamica_I",3,['Matematicas_especiales_I_para_fisica','Electricidad_y_magnetismo'])
+Matematicas_especiales_II_para_fisica=subject("Matematicas_especiales_II_para_fisica",3,['Calculo_de_ecuaciones_diferenciales_ordinarias','Matematicas_especiales_I_para_fisica'])
+Optativa_Electronica_e_instrumentacion=subject("Optativa_Electronica_e_instrumentacion",3,['Mediciones_electromagneticas'])
+
+#SEMESTRE VI
+Termodinamica_modulo_de_teoria=subject("Termodinamica_modulo_de_teoria",2,['Electricidad_y_magnetismo'])
+Termodinamica_modulo_experimental=subject("Termodinamica_modulo_experimental",2,['Mediciones_electromagneticas','Termodinamica_modulo_de_teoria'])
+Electrodinamica_II=subject("Electrodinamica_II",3,['Electrodinamica_I'])
+Mecanica_cuantica_I=subject("Mecanica_cuantica_I",4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
+Optativa_Herramientas_matematicas_y_computacionales=subject("Optativa_Herramientas_matematicas_y_computacionales",3,['Optativa_programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
+
+#SEMESTRE VII
+Mediciones_en_optica_y_acustica=subject("Mediciones_en_optica_y_acustica",3,['Oscilaciones_y_ondas'])
+Mecanica_estadistica=subject("Mecanica_estadistica",3,['Mecanica_cuantica_I','Termodinamica_modulo_de_teoria'])
+Temas_de_fisica_contemporanea=subject("Temas_de_fisica_contemporanea",1,['Experimentos_de_fisica_moderna'])
+Mecanica_cuantica_II=subject("Mecanica_cuantica_II",3,['Mecanica_cuantica_I'])
+Fluidos_y_optica=subject("Fluidos_y_optica",3,['Oscilaciones_y_ondas','Calculo_vectorial'])
+
+#SEMESTRE VIII
+
+Introduccion_al_estado_solido=subject("Introduccion_al_estado_solido",3,['Mecanica_estadistica'])
+Aplicaciones_de_fisica_moderna=subject("Aplicaciones_de_fisica_moderna",3,['Introduccion_al_estado_solido'])
+Introduccion_a_la_subatomica=subject("Introduccion_a_la_subatomica",3,['Mecanica_cuantica_II'])
+Libre_eleccion_II=subject("Libre_eleccion_II",4,[])
+Libre_eleccion_III=subject("Libre_eleccion_III",4,[])
+
+#SEMESTRE IX	
+Introduccion_a_la_investigacion_experimental_o_teorica=subject("Introduccion_a_la_investigacion_experimental_o_teorica",3,[])	
+Libre_eleccion_IV=subject("Libre_eleccion_IV",4,[])	
+Libre_eleccion_V=subject("Libre_eleccion_V",4,[])	
+Libre_eleccion_VI=subject("Libre_eleccion_VI",4,[])	
+Libre_eleccion_VII=subject("Libre_eleccion_VII",4,[])	
+
+#SEMESTRE X	
+Trabajo_de_grado=subject("Trabajo_de_grado",8,[])
+Libre_eleccion_VIII=subject("Libre_eleccion_VIII",4,[])
+
+
+def longitudlinea(mat,lin,crit,cred):
+   mat1=mat*1
+   crit1=crit*1
+   lincamp=lin*1
+   cred1=cred*1
+   MateriasNombres=[]
+   CriteriosLista=[]
+   LineasCampo=[]
+   Creditos=[]
+   cant_lin=[]
+   lin=[]
+   for i in mat1:
+     a=lincamp[mat1.index(i)]
+     try:
+       xx=int(a)
+       if a not in lin:
+         lin.append(a)
+         cant_lin.append(1)
+       else:
+         cant_lin[lin.index(a)]+=1
+     except:
+      for i in a:
+        if i not in lin:
+           lin.append(i)
+           cant_lin.append(1)
+        else:
+          cant_lin[lin.index(i)]+=1
+   c=1       
+   while c<200: 
+    for i in lin:
+      try:
+       if cant_lin[lin.index(i)]<cant_lin[lin.index(i)+1]:
+         cant_lin[lin.index(i)],cant_lin[lin.index(i)+1]=cant_lin[lin.index(i+1)],cant_lin[lin.index(i)]
+         lin[lin.index(i)],lin[lin.index(i)+1]=lin[lin.index(i)+1],lin[lin.index(i)]
+      except:
+        continue
+    c+=1
+   for i in lin: 
+    for j in mat1:
+      gg=lincamp[mat1.index(j)]
+      if gg==i:
+        MateriasNombres.append(j)
+        LineasCampo.append(lincamp[mat1.index(j)])
+        CriteriosLista.append(crit1[mat1.index(j)])
+        Creditos.append(cred1[mat1.index(j)])
+        
+   return MateriasNombres, LineasCampo, CriteriosLista, Creditos
+
+MateriasNombres,LineasCampo,CriteriosLista,Creditos=longitudlinea(MateriasNombres,LineasCampo,CriteriosLista,Creditos)
+
+
+semestre_1=[] ####esteeee mejor
+semestre_2=[]
+semestre_3=[]
+semestre_4=[]
+semestre_5=[]
+semestre_6=[]
+semestre_7=[]
+semestre_8=[]
+semestre_9=[]
+semestre_10=[]
+semestre_11=[]
+semestre_12=[]
+semestre_13=[]
+semestre_14=[]
+semestre_15=[]
+semestres=[semestre_1, semestre_2, semestre_3,  semestre_4,  semestre_5,  semestre_6,  semestre_7,  semestre_8,  semestre_9,  semestre_10,  semestre_11,  semestre_12,  semestre_13,  semestre_14,  semestre_15]
+
+
+m_organize=[]
+lincamp=[]
+criterio1=[]
+creditos=[]
+
+
+class Pensum(GridLayout, Screen):
+    def __init__(self,**kwargs):
+        
+        super(Pensum, self).__init__(**kwargs)
+        # 2 columnas
+        self.cols = 2
+        # Lista dde materias del pensum
+        self.materias=[str(MateriasNombres)]
+       
+        self.add_widget(Label(text=""))
+        
+        #Crea los checkbox
+        for i in MateriasNombres:
+            self.add_widget(Label(text= i))
+            self.active = CheckBox()
+            self.add_widget(self.active)
+            self.active.bind(active = self.on_checkbox_Active)
+
+        i=95
+        for self.active in self.children:        
+            self.active.id=int(i/2)
+            i=i-1
+
+        #Crea el botón
+        self.continuar = Button(text="Continuar", background_color=(0,1,1,1))
+        self.continuar.bind(on_press=self.onButtonPress)
+        self.add_widget(self.continuar)
+#--------------------------------------
+
+
+
+
+
+  # Función que elimina las materias clickeadas de la lista
+    def on_checkbox_Active(self, checkbox, value):
+        materias=['Fundamentos_\nde_fisica_experimental','Fundamentos_de_fisica_teorica','Calculo_diferencial_en_una_variable','Taller_de_matematicas_y_ciencias','Algebra_lineal_basica',
+          'Libre_eleccion_I','Mediciones_mecanicas','Mecanica_newtoniana','Calculo_integral_en_una_variable','Calculo_vectorial','Optativa_formación_integral_y_humanistica',
+          'Mediciones_electromagneticas','Electricidad_y_magnetismo','Optativa_programacion_y_metodos_numericos','Optativa_estadistica_basica',
+          'Calculo_de_ecuaciones_diferenciales_ordinarias','Optativa_formacion_integral_y_humanistica','Mecanica_analitica_I','Oscilaciones_y_ondas','Matematicas_especiales_I_para_fisica',
+          'Relatividad','Experimentos_de_fisica_moderna','Mecanica_analitica_II','Electrodinamica_I','Matematicas_especiales_II_para_fisica',
+          'Optativa_Electronica_e_instrumentacion','Termodinamica_modulo_experimental','Termodinamica_modulo_de_teoria','Electrodinamica_II',
+          'Mecanica_cuantica_I','Optativa_Herramientas_matematicas_y_computacionales','Mediciones_en_optica_y_acustica','Mecanica_estadistica',
+          'Temas_de_fisica_contemporanea','Mecanica_cuantica_II','Fluidos_y_optica','Introduccion_al_estado_solido','Aplicaciones_de_fisica_moderna',
+          'Introduccion_a_la_subatomica','Libre_eleccion_II','Libre_eleccion_III','Introduccion_a_la_investigacion_experimental_o_teorica','Libre_eleccion_IV',
+          'Libre_eleccion_V','Libre_eleccion_VI','Libre_eleccion_VII','Trabajo_de_grado','Libre_eleccion_VIII']
+
+        if value:
+            MateriasNombres.remove(materias[checkbox.id])
+
+        else:
+            MateriasNombres.insert(checkbox.id, materias[checkbox.id])
+        print(MateriasNombres)
+             
+     #Cuando se oprima el botón 'siguiente', muestra un popup para escoger los semestres
+    def onButtonPress(self, button):
+         
+        layout = GridLayout(cols = 1)
+ 
+        self.popupLabel = Label(text = "Seleccione la cantidad de semestres que quiere cursar")
+       
+        self.boton1 = Button(text = "1")
+        self.boton2 = Button(text = "2")
+        self.boton3 = Button(text = "3")
+        self.boton4 = Button(text = "4")
+        self.boton5 = Button(text = "5")
+        self.boton6 = Button(text = "6")
+        self.boton7 = Button(text = "7")
+        self.boton8 = Button(text = "8")
+        self.boton9 = Button(text = "9")
+        self.boton10 = Button(text = "10")
+        self.boton11 = Button(text = "11")
+        self.boton12 = Button(text = "12")
+        self.boton13 = Button(text = "13")
+        self.boton14 = Button(text = "14")
+        self.boton15 = Button(text = "15")
+
+       
+       
+        self.closeButton = Button(text = "Volver a la ventana anterior")
+         
+
+ 
+        layout.add_widget(self.popupLabel)
+        layout.add_widget(self.boton1)
+        layout.add_widget(self.boton2)
+        layout.add_widget(self.boton3)
+        layout.add_widget(self.boton4)
+        layout.add_widget(self.boton5)
+        layout.add_widget(self.boton6)
+        layout.add_widget(self.boton7)
+        layout.add_widget(self.boton8)
+        layout.add_widget(self.boton9)
+        layout.add_widget(self.boton10)
+        layout.add_widget(self.boton11)
+        layout.add_widget(self.boton12)
+        layout.add_widget(self.boton13)
+        layout.add_widget(self.boton14)
+        layout.add_widget(self.boton15)
+       
+        layout.add_widget(self.closeButton)  
+       
+       
+        self.popup = Popup(title ='Cantidad de semestres',
+                      content = layout,
+                      size_hint=(None, None), size=(400, 400))  
+        self.popup.open()    
+ 
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+        self.boton1.bind(on_press= self.onButtonPress1)
+        self.boton2.bind(on_press= self.onButtonPress2)
+        self.boton3.bind(on_press= self.onButtonPress3)
+        self.boton4.bind(on_press= self.onButtonPress4)
+        self.boton5.bind(on_press= self.onButtonPress5)
+        self.boton6.bind(on_press= self.onButtonPress6)
+        self.boton7.bind(on_press= self.onButtonPress7)
+        self.boton8.bind(on_press= self.onButtonPress8)
+        self.boton9.bind(on_press= self.onButtonPress9)
+        self.boton10.bind(on_press= self.onButtonPress10)
+        self.boton11.bind(on_press= self.onButtonPress11)
+        self.boton12.bind(on_press= self.onButtonPress12)
+        self.boton13.bind(on_press= self.onButtonPress13)
+        self.boton14.bind(on_press= self.onButtonPress14)
+        self.boton15.bind(on_press= self.onButtonPress15)
+    
+        
+        self.c=0
+    def onButtonPress1(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,1,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress2(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,2,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress3(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,3,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress4(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,4,m_organize,lincamp,criterio1,creditic)
+        
+        
+    def onButtonPress5(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,5,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress6(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,6,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress7(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,7,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress8(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,8,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress9(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,9,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress10(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,10,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress11(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,11,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress12(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,12,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress13(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,13,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress14(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,14,m_organize,lincamp,criterio1,creditic)
+        
+    def onButtonPress15(self,button):
+        self.popup.dismiss()
+        m_organize=MateriasNombres
+        lincamp=LineasCampo
+        criterio1=CriteriosLista
+        creditic=Creditos
+        Pensum.organizar(self,15,m_organize,lincamp,criterio1,creditic)
+        
+     ####Retorna listas de semestres
+
+
+    def organizar(self, n,mat,lin,cri,cre):    #función que retorna los semestres
+        layout = GridLayout()
+
+        self.popup = Popup(title ='Pensum',
+                          content = layout,
+                          size_hint=(None, None), size=(1400, 500))  
+        self.popup.open()  
+        semestre_1=[] ####esteeee mejor
+        semestre_2=[]
+        semestre_3=[]
+        semestre_4=[]
+        semestre_5=[]
+        semestre_6=[]
+        semestre_7=[]
+        semestre_8=[]
+        semestre_9=[]
+        semestre_10=[]
+        semestre_11=[]
+        semestre_12=[]
+        semestre_13=[]
+        semestre_14=[]
+        semestre_15=[]
+        semestres=[semestre_1, semestre_2, semestre_3,  semestre_4,  semestre_5,  semestre_6,  semestre_7,  semestre_8,  semestre_9,  semestre_10,  semestre_11,  semestre_12,  semestre_13,  semestre_14,  semestre_15]
+        
+        
+        credi_por_sem=0
+        i=1
+
+        n=n #número de semestres
+        m_organize=mat
+        lincamp=lin
+
+        campo_temp=[]
+
+        credi_temp=0
+        creditos=cre
+        
+        registrados=[]
+        
+        minimo=0
+        veces=0
+        
+        for i in lincamp:
+            if i==lincamp[0]:
+              veces= veces+1
+              if veces>minimo:
+                minimo=veces
+        
+        if minimo > n:
+          n=minimo
+        if n>len(m_organize):
+          n=len(m_organize)
+        
+        error=0
+        total_creditos=0
+        for i in creditos:
+          total_creditos=total_creditos+i
+        
+        error4=int(len(m_organize)/n)
+        if error4>4:
+          error4=4
+        credi_por_sem=int(total_creditos/n)
+        error1=total_creditos%n
+        error2=int(error1/n)
+        error3=error1%n
+        error=error3+error2+error4
+        credi_por_sem=credi_por_sem +error
+        
+        
+        
+        mater_por_sem=int(len(m_organize)/n)
+        adic=len(m_organize)%n
+        conta_adic=0
+        
+        elim=0
+        m=15-n
+        if m > 0:
+          while elim <m:
+            semestres.pop() #eliminar semestres sobrantes
+            elim=elim+1
+        
+        if 1==2:
+          pass
+        
+        else:
+          for semestre_indie in semestres:
+            for materia in m_organize:
+              campo_indie=lincamp[m_organize.index(materia)]
+              if materia not in registrados:
+                if len(campo_temp)< mater_por_sem:
+                  if campo_indie not in campo_temp:
+                    campo_temp.append(campo_indie)
+                    semestre_indie.append(materia)
+                    registrados.append(materia)
+                    credi_temp=credi_temp+ creditos[m_organize.index(materia)]
+                  else:
+                    pass
+                elif conta_adic<adic and credi_temp<credi_por_sem:
+                  if campo_indie not in campo_temp:
+                    campo_temp.append(campo_indie)
+                    semestre_indie.append(materia)
+                    registrados.append(materia)
+                    conta_adic=conta_adic +1
+                    credi_temp=credi_temp+ creditos[m_organize.index(materia)]
+        
+                  else:
+                    pass
+                else:
+                  pass
+              else:
+                pass
+            campo_temp=[]
+            credi_temp=0
+          print( semestres)
+
+
+
+          c=len(max(semestres,key=len))
+          a=0   
+          for i in semestres:
+                layout.add_widget(Label(text='Semestre '+ str(a+1), color=[155/255,0,51/255,1])) 
+                a=a+1
+                cantidad=0
+                for j in i:
+                    self.mat = Label(text= j )
+                    layout.add_widget(self.mat) 
+                    cantidad=cantidad+1
+                    if len(i)-1==i.index(j):
+                        if cantidad < c:
+                            self.mat = Label(text= '' )
+                            layout.add_widget(self.mat) 
+                            cantidad=cantidad+1
+                            if cantidad < c:
+                                self.mat = Label(text= '' )
+                                layout.add_widget(self.mat) 
+                                cantidad=cantidad+1 
+                                if cantidad < c:
+                                    self.mat = Label(text= '' )
+                                    layout.add_widget(self.mat) 
+                                    cantidad=cantidad+1
+                                    if cantidad < c:
+                                        self.mat = Label(text= '' )
+                                        layout.add_widget(self.mat) 
+                                        cantidad=cantidad+1
+                                        if cantidad < c:
+                                            self.mat = Label(text= '' )
+                                            layout.add_widget(self.mat) 
+                                            cantidad=cantidad+1 
+                                            if cantidad < c:
+                                                self.mat = Label(text= '' )
+                                                layout.add_widget(self.mat) 
+                                                cantidad=cantidad+1
+                                                if cantidad < c:
+                                                    self.mat = Label(text= '' )
+                                                    layout.add_widget(self.mat) 
+                                                    cantidad=cantidad+1
+          layout.rows=a 
+          layout.cols=c+1
+        
+        
+class SaludMental(GridLayout, Screen):
+    def __init__(self, **kwargs):
+        # super function can be used to gain access  
+        # to inherited methods from a parent or sibling class  
+        # that has been overwritten in a class object.  
+        super(SaludMental, self).__init__(**kwargs)
+        self.cols = 1
+       
+        self.seleccione = Label(text = "¿Sobre qué categoría le gustaría informarse?")
+        self.add_widget(self.seleccione)
+       
+        self.Ejerciciofisico = Button(text="Ejercicio Físico", background_color=(70/255, 255/255, 212/255, 1))
+        self.Ejerciciofisico.bind(on_press=self.btnejercicio)
+        self.add_widget(self.Ejerciciofisico)
+       
+        self.Alimentacion = Button(text="Alimentacion", background_color=(70/255, 255/255, 212/255, 1))
+        self.Alimentacion.bind(on_press=self.btnalimentacion)
+        self.add_widget(self.Alimentacion)
+       
+        self.Relacionessociales = Button(text="Relaciones Sociales", background_color=(70/255, 255/255, 212/255, 1))
+        self.Relacionessociales.bind(on_press=self.btnrelaciones)
+        self.add_widget(self.Relacionessociales)
+       
+        self.Relajacion = Button(text="Relajación", background_color=(70/255, 255/255, 212/255, 1))
+        self.Relajacion.bind(on_press=self.btnrelajacion)
+        self.add_widget(self.Relajacion)
+       
+        self.Sueño = Button(text="Sueño", background_color=(70/255, 255/255, 212/255, 1))
+        self.Sueño.bind(on_press=self.btnSueño)
+        self.add_widget(self.Sueño)
+       
+
+       
+    def btnejercicio(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = "El ejercicio físico nos ayuda, pues promueve la segregación \n de endorfinas y serotonina relacionada con la \n sensación de bienestar. También es un potente distractor de \n las preocupaciones y el dolor. Estudios recientes \n además apuntan a la norepinefrina moduladora \n que se encargaría de regular las reacciones al estrés.")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Ejercicio Físico',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 300))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+   
+    def btnalimentacion(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = "Come mucha fruta y verduras y alimentos ricos en fibra. \n Evita los alimentos grasos o excesivamente azucarados. \n Los alimentos inciden sobre la producción de Serotonina,\n Noradrenalina y Dopamina del cerebro. Todos los alimentos \n que fomenten la producción de estos neurotransmisores \n serán beneficiosos para el estado de ánimo y la salud \n mental: Hay que beber al menos 8 vasos de agua \n al día para mantener el cerebro y el cuerpo \n hidratados y fomentar así sus funciones")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Alimentación',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 400))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+       
+    def btnrelaciones(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = "El contacto social se asocia con la oxitocina, neuropéptido \n que produce sensación de bienestar. Además el apoyo social\n es un factor protector en muchos trastornos psicológicos \n y una gran ayuda en momentos de necesidad. Además se \n asocia con un envejecimiento más favorable. ")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Relaciones Sanas',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 300))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+       
+    def btnrelajacion(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = "Dedica un tiempo para ti. La relajación disminuye \n los efectos dañinos del estrés, reduce la tensión \n muscular, mejora síntomas psicosomáticos y el \n autocontrol. Y proporciona bienestar a la persona.")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Relajación',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 300))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+       
+    def btnSueño(self, button):
+         
+        layout = GridLayout(cols = 1)
+        self.consejos= Label(text = " A pesar de que 6,5 son suficientes para rendir bien \n durante el día, el dormir 8 horas permitirá descansar \n el tiempo necesario para nuestra mente y cuerpo.\n Procura ir siempre a dormir a la misma hora y seguir la \n misma rutina antes de ir a dormir. No hagas comidas\n copiosas ni ejercicio justo antes de dormir. No bebas \n alcohol en abundancia pues induce el sueño en un principio \n pero luego provoca despertares a media noche. Procura no \n mirar la tele en la cama. El sueño es muy importante en \n los procesos de aprendizaje y consolidación de memorias,\n ayuda a la concentración, puede ayudar a reducir síntomas \n de estrés y depresión. Pero dormir excesivamente no es \n bueno así que ¡que no se nos vaya de las manos!")
+        self.closeButton = Button(text = "Volver a la ventana anterior", size_hint=(None, None), size=(200,50))
+        layout.add_widget(self.consejos)
+        layout.add_widget(self.closeButton)
+        self.popup = Popup(title ='Sueño',
+                      content = layout,
+                      size_hint=(None, None), size=(500, 400))  
+        self.popup.open()    
+        self.closeButton.bind(on_press = self.popup.dismiss)  
+       
+
+         
+       
+
+class MenuScreen(Screen):
+    pass
+ 
+   
+# Crea screen manager
+sm = ScreenManager()
+sm.add_widget(MenuScreen(name='menu'))
+sm.add_widget(Pensum(name='pensum'))
+sm.add_widget(SaludMental(name='saludmental'))
+
+
+class NombreTentativo(App):
+    def build(self):
+        return sm
+
+
+if __name__ == '__main__':
+    NombreTentativo().run()
