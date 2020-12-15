@@ -15,73 +15,75 @@ class subject:
         self.lista1=lista_de_prerrequisitos
         self.lista2=lista_de_correquisitos
 
+
 #SEMESTRE I
-Fundamentos_de_fisica_experimental=subject(3, [])
-Fundamentos_de_fisica_teorica=subject(3, [])
-Calculo_diferencial_en_una_variable=subject(4, [])
-Taller_de_matematicas_y_ciencias=subject(3, [])
-Algebra_lineal_basica=subject(4, [])
-Libre_eleccion_I=subject(4,[])
+Calculo_diferencial_en_una_variable=subject("Calculo_diferencial_en_una_variable",4)
+Fundamentos_de_fisica_teorica=subject("Fundamentos_de_fisica_teorica",3)
+Algebra_lineal_basica=subject("Algebra_lineal_basica",4)
+Taller_de_matematicas_y_ciencias=subject("Taller_de_matematicas_y_ciencias",3)
+Fundamentos_de_fisica_experimental=subject("Fundamentos_de_fisica_experimental",3)
+Libre_eleccion_I=subject("Libre_eleccion_I",4)
 
 #SEMESTRE II
-Mediciones_mecanicas=subject(3, ['Fundamentos_de_fisica_experimental'])
-Mecanica_newtoniana=subject(4, ['Fundamentos_de_fisica_teorica'])
-Calculo_integral_en_una_variable=subject(4, ['Calculo_diferencial'])
-Calculo_vectorial=subject(4, [], ['Calculo_integral'])
-Optativa_formación_integral_y_humanistica=subject(3, [])
+Mediciones_mecanicas=subject("Mediciones_mecanicas",3, ['Fundamentos_de_fisica_experimental'])
+Mecanica_newtoniana=subject("Mecanica_newtoniana",4, ['Fundamentos_de_fisica_teorica'])
+Calculo_integral_en_una_variable=subject("Calculo_integral_en_una_variable",4, ['Calculo_diferencial_en_una_variable'])
+Calculo_vectorial=subject("Calculo_vectorial",4, ['Calculo_integral_en_una_variable'])
+Optativa_formación_integral_y_humanistica=subject("Optativa_formación_integral_y_humanistica",3)
 
 #SEMESTRE III
-Mediciones_electromagneticas=subject(3,[],['Fundamentos_de_fisica_experimental'])
-Electricidad_y_magnetismo=subject(3,[],['Calculo_integral', 'Calculo_vectorial'])
-Optativa_programacion_y_metodos_numericos=subject(3,[],['Algebra_lineal'])
-Optativa_estadistica_basica=subject(3,['Calculo_diferencial'])
-Calculo_de_ecuaciones_diferenciales_ordinarias=subject(4,['Calculo_integral'])
+Mediciones_electromagneticas=subject("Mediciones_electromagneticas",3,['Fundamentos_de_fisica_experimental'])
+Electricidad_y_magnetismo=subject("Electricidad_y_magnetismo",3,['Calculo_integral_en_una_variable', 'Calculo_vectorial'])
+Optativa_programacion_y_metodos_numericos=subject("Optativa_programacion_y_metodos_numericos",3,[],['Algebra_lineal_basica'])
+Optativa_estadistica_basica=subject("Optativa_estadistica_basica",3,['Calculo_diferencial_en_una_variable'])
+Calculo_de_ecuaciones_diferenciales_ordinarias=subject("Calculo_de_ecuaciones_diferenciales_ordinarias",4,['Calculo_integral_en_una_variable'])
 
 #SEMESTRE IV
-Optativa_formacion_integral_y_humanistica=subject(3,[])
-Mecanica_analitica_I=subject(3,['Mecanica_newtoniana'])
-Oscilaciones_y_ondas=subject(3,['Mecanica_newtoniana'])
-Matematicas_especiales_I_para_fisica=subject(3,['Calculo_de_ecuaciones_diferenciales_ordinarias'])
-Relatividad=subject(3,['Electricidad_y_magnetismo'])
+Optativa_formacion_integral_y_humanistica=subject("Optativa_formacion_integral_y_humanistica",3,[])
+Mecanica_analitica_I=subject("Mecanica_analitica_I",3,['Mecanica_newtoniana'])
+Oscilaciones_y_ondas=subject("Oscilaciones_y_ondas",3,['Mecanica_newtoniana'])
+Matematicas_especiales_I_para_fisica=subject("Matematicas_especiales_I_para_fisica",3,['Calculo_de_ecuaciones_diferenciales_ordinarias'])
+Relatividad=subject("Relatividad",3,['Electricidad_y_magnetismo'])
 
 #SEMESTRE V
-Experimentos_de_fisica_moderna=subject(3,['Fundamentos_de_fisica_experimental'],['Oscilaciones_y_ondas'])
-Mecanica_analitica_II=subject(3,['Mecanica_Analitica I'])
-Electrodinamica_I=subject(3,['Matematicas_especiales_I_para_fisica','Electricidad_y_magnetismo'])
-Matematicas_especiales_II_para_fisica=subject(3,['Calculo_de_ecuaciones_diferenciales_ordinarias','Matematicas_especiales_I_para_fisica'])
-Optativa_Electronica_e_instrumentacion=subject(3,['Mediciones_electromagneticas'])
+Experimentos_de_fisica_moderna=subject("Experimentos_de_fisica_moderna",3,['Fundamentos_de_fisica_experimental','Oscilaciones_y_ondas'])
+Mecanica_analitica_II=subject("Mecanica_analitica_II",3,['Mecanica_analitica_I'])
+Electrodinamica_I=subject("Electrodinamica_I",3,['Matematicas_especiales_I_para_fisica','Electricidad_y_magnetismo'])
+Matematicas_especiales_II_para_fisica=subject("Matematicas_especiales_II_para_fisica",3,['Calculo_de_ecuaciones_diferenciales_ordinarias','Matematicas_especiales_I_para_fisica'])
+Optativa_Electronica_e_instrumentacion=subject("Optativa_Electronica_e_instrumentacion",3,['Mediciones_electromagneticas'])
 
 #SEMESTRE VI
-Termodinamica_modulo_experimental=subject(2,['Mediciones_electromagneticas'],['Termodinamica_modulo_de_teoria'])
-Termodinamica_modulo_de_teoria=subject(2,['Electricidad_y_magnetismo'])
-Electrodinamica_II=subject(3,['Electrodinamica_I'])
-Mecanica_cuantica_I=subject(4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
-Optativa_Herramientas_matematicas_y_computacionales=subject(3,['Optativa_Programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
+Termodinamica_modulo_de_teoria=subject("Termodinamica_modulo_de_teoria",2,['Electricidad_y_magnetismo'])
+Termodinamica_modulo_experimental=subject("Termodinamica_modulo_experimental",2,['Mediciones_electromagneticas','Termodinamica_modulo_de_teoria'])
+Electrodinamica_II=subject("Electrodinamica_II",3,['Electrodinamica_I'])
+Mecanica_cuantica_I=subject("Mecanica_cuantica_I",4,['Mecanica_analitica_I','Matematicas_especiales_I_para_fisica','Experimentos_de_fisica_moderna'])
+Optativa_Herramientas_matematicas_y_computacionales=subject("Optativa_Herramientas_matematicas_y_computacionales",3,['Optativa_programacion_y_metodos_numericos','Matematicas_especiales_I_para_fisica'])
 
 #SEMESTRE VII
-Mediciones_en_optica_y_acustica=subject(3,['Oscilaciones_y_ondas'])
-Mecanica_estadistica=subject(3,['Mecanica_cuantica_I','Termodinamica_modulo_de_teoria'])
-Temas_de_fisica_contemporanea=subject(1,['Experimentos_en_fisica_moderna'])
-Mecanica_cuantica_II=subject(3,['Mecanica_cuantica_I'])
-Fluidos_y_optica=subject(3,['Oscilaciones_y_ondas','Calculo_vectorial'])
+Mediciones_en_optica_y_acustica=subject("Mediciones_en_optica_y_acustica",3,['Oscilaciones_y_ondas'])
+Mecanica_estadistica=subject("Mecanica_estadistica",3,['Mecanica_cuantica_I','Termodinamica_modulo_de_teoria'])
+Temas_de_fisica_contemporanea=subject("Temas_de_fisica_contemporanea",1,['Experimentos_de_fisica_moderna'])
+Mecanica_cuantica_II=subject("Mecanica_cuantica_II",3,['Mecanica_cuantica_I'])
+Fluidos_y_optica=subject("Fluidos_y_optica",3,['Oscilaciones_y_ondas','Calculo_vectorial'])
 
 #SEMESTRE VIII
-Aplicaciones_de_fisica_moderna=subject(3,['Introduccion_al_estado_solido'])
-Introduccion_al_estado_solido=subject(3,['Mecanica_estadistica'])
-Introduccion_a_la_subatomica=subject(3,['Mecanica_cuantica_II'])
-Libre_eleccion_II=subject(4,[])
-Libre_eleccion_III=subject(4,[])
+
+Introduccion_al_estado_solido=subject("Introduccion_al_estado_solido",3,['Mecanica_estadistica'])
+Aplicaciones_de_fisica_moderna=subject("Aplicaciones_de_fisica_moderna",3,['Introduccion_al_estado_solido'])
+Introduccion_a_la_subatomica=subject("Introduccion_a_la_subatomica",3,['Mecanica_cuantica_II'])
+Libre_eleccion_II=subject("Libre_eleccion_II",4,[])
+Libre_eleccion_III=subject("Libre_eleccion_III",4,[])
 
 #SEMESTRE IX	
-Introduccion_a_la_investigacion_experimental_o_teorica=subject(3,[])	
-Libre_eleccion_IV=subject(4,[])	
-Libre_eleccion_V=subject(4,[])	
-Libre_eleccion_VI=subject(4,[])	
-Libre_eleccion_VII=subject(4,[])	
+Introduccion_a_la_investigacion_experimental_o_teorica=subject("Introduccion_a_la_investigacion_experimental_o_teorica",3,[])	
+Libre_eleccion_IV=subject("Libre_eleccion_IV",4,[])	
+Libre_eleccion_V=subject("Libre_eleccion_V",4,[])	
+Libre_eleccion_VI=subject("Libre_eleccion_VI",4,[])	
+Libre_eleccion_VII=subject("Libre_eleccion_VII",4,[])	
 
 #SEMESTRE X	
-Trabajo_de_grado=subject(8,[])
-Libre_eleccion_VIII=subject(4,[])
+Trabajo_de_grado=subject("Trabajo_de_grado",8,[])
+Libre_eleccion_VIII=subject("Libre_eleccion_VIII",4,[])
 
 #-------------------------------------------------
 
@@ -713,140 +715,6 @@ class HomeScreen(Screen):
     pass
 ---------------------------
 
-
------------------------------------------------------------------------------------
-#Función prerrequisitos, campo, criterio ##############################
-
-materias2=[]    ####prueba para matriz
-CriteriosLista=[]
-LineasCampo=[]
-Semestre=[]
-class materias:
-    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,linea=[0]):
-        self.nombre=nom
-        self.creditos=cre
-        self.prerrequisitos=pre
-        self.correquisitos=co
-        self.criterio=criterio
-        self.linea=linea
-        CriteriosLista.append(self.criterio_val())
-        LineasCampo.append(self.linea_val())
-        self.__str__()
-        self.orden()
-    def criterio_val(self):
-        return self.criterio
-    def linea_val(self):
-    #    if len(self.prerrequisitos)==1:
-     #       return self.linea[0]
-      #  else:
-        #  for n in len(self.prerrequisitos):
-            return self.linea
-            
-    def __str__(self):
-        cadena=self.nombre
-        if cadena not in materias2:
-            materias2.append(cadena)
-    def orden(self):
-        if len(self.prerrequisitos)==0:
-          self.linea=[len(LineasCampo)+1]
-          LineasCampo[-1]=self.linea_val() 
-        elif len(self.prerrequisitos)==1:
-          for n in materias2:
-                for i in range(len(self.prerrequisitos)):
-                    if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
-                        self.criterio=self.criterio+CriteriosLista[materias2.index(n)]+1
-                        CriteriosLista[-1]=self.criterio_val()
-                        self.linea=LineasCampo[materias2.index(n)]
-                        LineasCampo[-1]=self.linea_val()
-        else:
-          if 0 in self.linea:
-            self.linea.remove(0)
-          for n in materias2:
-                for i in range(len(self.prerrequisitos)):
-                    if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
-                        self.criterio=self.criterio+CriteriosLista[materias2.index(n)]+1
-                        CriteriosLista[-1]=self.criterio_val()
-                        self.linea.append(LineasCampo[materias2.index(n)])
-
-                        LineasCampo[-1]=self.linea_val()
-
-    def ordenando(self):
-      for i in range(LineasCampo):
-        for j in range(LineasCampo[i]):
-          for k in range(lineasCampo):
-            for l in range(lineasCampo[k]):
-              if LineasCampo[i][j]==LineasCampo[k][l] and i != k:
-                Semestre.append(materias2[i])
-                Semestre.append(materias2[k])
-            
-
-                    
-                    
-    def _gt_(self, otro): #para utilizar el sorted(materias)
-        return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
-
-
-##############################################
-
-#Función para leer prerrequisitos
-import random as rn
-materias2=[]    
-materias3=[]
-valcorrequisitos=[]
-LineasCampo=[]
-class materias:
-    def __init__(self,nom,cre=3,pre=[],co=[],criterio=0,Linea=[0]):
-        self.nombre=nom
-        self.creditos=cre
-        self.prerrequisitos=pre
-        self.correquisitos=co
-        self.criterio=criterio
-        self.criterio2=0
-        self.linea=linea
-        LineasCampo.append(self.linea_val())
-        materias3.append(self.criterio_val())
-        valcorrequisitos.append(self.criterio2)
-        self.__str__()
-        self.orden()
-    def criterio_val(self):
-        return self.criterio
-    def linea_val(self):
-        return self.linea
-    def __str__(self):
-        cadena=self.nombre
-        if cadena not in materias2:
-            materias2.append(cadena)
-    def orden(self):
-        if len(self.prerrequisito)==0:
-            self.linea=[len(LineasCampo)+1]
-            LineasCampo[-1]=self.linea_val
-        if len(self.prerrequisitos)==1:
-             for n in materias2:
-                for i in range(len(self.prerrequisitos)):
-                   if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
-                       self.criterio=self.criterio+materias3[materias2.index(n)]+1
-                       materias3[-1]=self.criterio_val()
-                       self.linea=LineasCampo[materias2.index(n)]
-                       LineasCampo[-1]=self.linea_val()
-         if len(self.prerrequisitos)>1:
-           if 0 in self.linea:
-                    self.linea.remove(0)
-
-           for n in materias2:
-                for i in range(len(self.prerrequisitos)):
-                    if n == self.prerrequisitos[i]: #si en la lista materias hay un prerrequisito
-                        self.criterio=self.criterio+materias3[materias2.index(n)]+1
-                        materias3[-1]=self.criterio_val()
-                        self.linea.append(LineasCampo[materias2.index(n)])
-                        LineasCampo[-1]=self.linea_val()
-     
-         if len(self.correquisitos)!=0:            
-            self.criterio2=rn.random()
-            valcorrequisitos[-1]=self.criterio2
-            for i in self.correquisitos:
-                valcorrequisitos[materias2.index(i)]=self.criterio2
-    def __gt__(self, otro): #para utilizar el sorted(materias)
-        return self.criterio > otro.criterio  #El criterio es lo que se utilizará para armar la matriz
 
 #Función para organizar las materias
 
