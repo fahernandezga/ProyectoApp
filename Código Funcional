@@ -190,57 +190,6 @@ Trabajo_de_grado=subject("Trabajo_de_grado",8,[])
 Libre_eleccion_VIII=subject("Libre_eleccion_VIII",4,[])
 
 
-def longitudlinea(mat,lin,crit,cred):
-   mat1=mat*1
-   crit1=crit*1
-   lincamp=lin*1
-   cred1=cred*1
-   MateriasNombres=[]
-   CriteriosLista=[]
-   LineasCampo=[]
-   Creditos=[]
-   cant_lin=[]
-   lin=[]
-   for i in mat1:
-     a=lincamp[mat1.index(i)]
-     try:
-       xx=int(a)
-       if a not in lin:
-         lin.append(a)
-         cant_lin.append(1)
-       else:
-         cant_lin[lin.index(a)]+=1
-     except:
-      for i in a:
-        if i not in lin:
-           lin.append(i)
-           cant_lin.append(1)
-        else:
-          cant_lin[lin.index(i)]+=1
-   c=1       
-   while c<200: 
-    for i in lin:
-      try:
-       if cant_lin[lin.index(i)]<cant_lin[lin.index(i)+1]:
-         cant_lin[lin.index(i)],cant_lin[lin.index(i)+1]=cant_lin[lin.index(i+1)],cant_lin[lin.index(i)]
-         lin[lin.index(i)],lin[lin.index(i)+1]=lin[lin.index(i)+1],lin[lin.index(i)]
-      except:
-        continue
-    c+=1
-   for i in lin: 
-    for j in mat1:
-      gg=lincamp[mat1.index(j)]
-      if gg==i:
-        MateriasNombres.append(j)
-        LineasCampo.append(lincamp[mat1.index(j)])
-        CriteriosLista.append(crit1[mat1.index(j)])
-        Creditos.append(cred1[mat1.index(j)])
-        
-   return MateriasNombres, LineasCampo, CriteriosLista, Creditos
-
-MateriasNombres,LineasCampo,CriteriosLista,Creditos=longitudlinea(MateriasNombres,LineasCampo,CriteriosLista,Creditos)
-
-
 semestre_1=[] 
 semestre_2=[]
 semestre_3=[]
