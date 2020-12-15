@@ -241,7 +241,7 @@ def longitudlinea(mat,lin,crit,cred):
 MateriasNombres,LineasCampo,CriteriosLista,Creditos=longitudlinea(MateriasNombres,LineasCampo,CriteriosLista,Creditos)
 
 
-semestre_1=[] ####esteeee mejor
+semestre_1=[] 
 semestre_2=[]
 semestre_3=[]
 semestre_4=[]
