@@ -1,1 +1,91 @@
+def organizar(n,mat,lin,cri):    #función que retorna las materias a cursar por semestre
+  i=1
+  ii=0
+  conta=0
+  n=n #número de semestres
+  m_organize=mat
+  lincamp=lin
+  criterio1=cri
+  semestre_temp=[]
+  campo_temp=[]
+  contador_semestre=1
+  condicion_distribucion=0
+  credi_temp=0
 
+  registrados=[]
+
+  minimo=0
+  veces=0
+
+  for i in lincamp:
+      if i==lincamp[0]:
+        veces= veces+1
+        if veces>minimo:
+          minimo=veces
+
+  if minimo > n:
+    n=minimo
+  if n>len(m_organize):
+    n=len(m_organize)
+
+  error=0
+  total_creditos=0
+  for i in creditos:
+    total_creditos=total_creditos+i
+  
+  error4=int(len(m_organize)/n)
+  if error4>4:
+    error4=4
+  credi_por_sem=int(total_creditos/n)
+  error1=total_creditos%n
+  error2=int(error1/n)
+  error3=error1%n
+  error=error3+error2+error4
+  credi_por_sem=credi_por_sem +error
+
+
+
+  mater_por_sem=int(len(m_organize)/n)
+  adic=len(m_organize)%n
+  conta_adic=0
+
+  elim=0
+  m=15-n
+  if m > 0:
+    while elim <m:
+      semestres.pop() #eliminar semestres sobrantes
+      elim=elim+1
+
+  if 1==2:
+    pass
+
+  else:
+    for semestre_indie in semestres:
+      for materia in m_organize:
+        campo_indie=lincamp[m_organize.index(materia)]
+        if materia not in registrados:
+          if len(campo_temp)< mater_por_sem:
+            if campo_indie not in campo_temp:
+              campo_temp.append(campo_indie)
+              semestre_indie.append(materia)
+              registrados.append(materia)
+              credi_temp=credi_temp+ creditos[m_organize.index(materia)]
+            else:
+              pass
+          elif conta_adic<adic and credi_temp<credi_por_sem:
+            if campo_indie not in campo_temp:
+              campo_temp.append(campo_indie)
+              semestre_indie.append(materia)
+              registrados.append(materia)
+              conta_adic=conta_adic +1
+              credi_temp=credi_temp+ creditos[m_organize.index(materia)]
+
+            else:
+              pass
+          else:
+            pass
+        else:
+          pass
+      campo_temp=[]
+      credi_temp=0
+    return semestres
